@@ -1,0 +1,41 @@
+<div class="hidden" id="img-hover">
+        <div class="img-hidden">
+          <a href="#" id="fav">
+            <i class="fa fa-heart"></i>
+          </a>
+          <a href="#" id="play-media">
+            <i class="fa fa-play-circle"></i>
+          </a>
+          <p id="movie-name">Ponyo</p>
+          <div id="type-movie">
+            <i class ="fa fa-tag"> Fantacy</i>
+          </div>
+        </div>
+      </div>
+
+<img id="userFace"
+            src="https://shop.line-scdn.net/themeshop/v1/products/0e/c9/dc/0ec9dca1-d0a1-4fb5-88ed-dc59de677cf7/39/WEBSTORE/icon_198x278.png"
+            class="rounded-circle">
+
+
+
+<div class="gender-inp">
+          <input type="radio" name="gender" id="male-radio">
+          <p class="gender">Male</p>
+          <input type="radio" name="gender" id="female-radio">
+          <p class="gender">Female</p>
+        </div>
+
+
+ // Comment.create(
+                    //     {
+                    //         author: 'Rose Marry',
+                    //         text: 'So fantastic!'
+                    //     }, function (err, comment) {
+                    //         if (err) {
+                    //             console.log(err);
+                    //         } else {
+                    //             movies.comment.push(comment);
+                    //             movies.save();
+                    //         }
+                    //     });

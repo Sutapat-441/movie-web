@@ -1,0 +1,40 @@
+<%- include('partials/secondHeader.ejs') %>
+<h1>Login Admin</h1>
+<div class="container-login">
+    <form action="/adminLogin" method="POST">
+        <div class="login-left">
+            <img class="imglogin-left"
+                src="https://i.pinimg.com/originals/fc/1d/82/fc1d82ed5ea152597ce8decb0b526d90.jpg">
+        </div>
+
+        <div class="login-right">
+
+            <div id="iconUser">
+                <i class="fa fa-user"></i>
+            </div>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" name="username" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Username</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            <div class="checkbox-agree">
+                <input type="checkbox">
+                <label for="remember" id="remember">Remember me</label>
+            </div>
+
+            <div class="button-area">
+                <button class="btn btn-primary" id="logInButton">Log In</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+
+<%- include('partials/secondFooter.ejs') %>

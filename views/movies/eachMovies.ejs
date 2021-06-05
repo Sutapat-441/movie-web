@@ -1,0 +1,93 @@
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" href="../3/app3.css">
+</head>
+<body>
+<%- include('../partials/lodingScreen.ejs') %>
+<%- include('../partials/navbar.ejs') %>
+  <%- include('../partials/headerforEachmovies.ejs') %>
+
+    <div class="main-container">
+
+      <div class="container-left">
+
+        <div class="card shadow-sm">
+          <img src="<%= movies.image%>" class='card-img-top img-eachmovie' height="600px">
+          <div class="card-body">
+            <h5 class='card-title'></h5>
+            <p class="card-text"></p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="container-right">
+        <h1 id="name-eachMovie">
+          <%= movies.name %>
+        </h1>
+        <div class="eachMovieType">
+          <i class="fa fa-tag"></i>
+          <p id="each-movie-type">
+            <%= movies.type %>
+          </p>
+        </div>
+        <div class="eachMovieTime">
+          <i class="fa fa-hourglass-half"></i>
+          <p id="each-movie-time">
+            <%= movies.time %> mins.
+          </p>
+        </div>
+        <div class="eachMovieSub">
+          <i class="fa fa-volume-up"></i>
+          <p id="each-movie-sub">
+            <%= movies.language %>
+          </p>
+          <!-- <p class="submitted">Submitted by <%= movies.author.username %></p> -->
+        </div>
+
+    </div>
+      <iframe width="560" height="315" src="<%=movies.URL%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+
+
+    <!-- <%# if(currentUser && movies.auther.id.equals(currentUser._id)){ %>
+      <a href="/movies/<%# movies._id %>/edit" class="btn btn-warning">Edit</a>
+      <form action="/movies/<%# movies._id %>?_method=DELETE" method="POST">
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+      <%# } %> -->
+
+
+    <% if(currentUser !=undefined){ %>
+      <% if(currentUser.role=='admin' ){ %>
+        <div class="btn-group btn-actionForAdmin">
+          <a href="/movies/<%= movies._id %>" class="btn btn-sm btn-outline-secondary">View</a>
+          <a href="/movies/<%= movies._id %>/edit" class="btn btn-warning">Edit</a>
+          <form action="/movies/<%= movies._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+        <% } %>
+          <% } %>
+
+
+            <div class="comment-container">
+              <h1 class="head-review">Reviews</h1><i class="fa fa-comments comment-icon"></i>
+              <% movies.comment.forEach(function(comment){ %>
+                <p>
+                  <strong>
+                    <%= comment.author.username %>
+                  </strong> - <%= comment.text %>
+                </p>
+                <% if(currentUser && comment.auther.id.equals(currentUser._id)){ %>
+                  <a href="/movies/<%= movies._id %>/comment/<%= comment._id %>/edit" class="btn btn-warning">Edit</a>
+                  <form action="/movies/<%= movies._id %>/comment/<%=comment._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                  <% } %>
+                    <% }); %>
+            </div>
+
+            <%- include('../partials/footer.ejs') %>

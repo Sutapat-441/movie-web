@@ -1,0 +1,385 @@
+body{
+    background: black;
+} 
+/*#search{
+    outline: none;
+}*/
+#userFace{
+    width:80px;
+    height:80px;    
+}
+#navbarDarkDropdownMenuLink{
+    color: #54C571;
+}
+.fa-user-circle{
+    color: aliceblue;
+}
+.fa-search{
+    font-size: 1.2em;
+    color: aliceblue;
+    margin-right: 0.5em;
+    margin-top: 1.5em;
+}
+#searchMovies{
+    display: flex;
+    width:314px;
+    margin-left:360px;
+}
+.search{
+    display: flex;
+    padding: 3px;
+    border: none;
+    border-bottom: 1px solid white;
+    width: 30em;
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    background: transparent;
+    color: white;
+}
+.search::placeholder{
+    color: aliceblue;
+}
+#search-button{
+    position: relative;
+    margin-top: 10px ;
+    height: 40px;
+}
+.under-nav{
+    display: flex;
+    flex-direction: row;
+    margin-left: 830px;
+}
+.tab-anchor{
+    display: flex;
+    color: white;
+    text-decoration: none;
+    outline-style: none;
+    margin-top: 1.5em;
+}
+.tab-anchor:hover{
+    color: aliceblue;
+}
+#movies-tab{
+    margin-top: 1.6em;
+}
+.fa-star{
+    margin-top:1.8em ;
+    margin-right:0.4em ;
+    color: aliceblue;
+}
+.fa-film{
+    margin-top:1.8em ;
+    margin-right:0.4em ;
+    margin-left: 2em;
+    color: aliceblue;
+}
+
+
+
+/*home*/
+#carouselExampleCaptions{
+    margin: 0 auto;
+    width: 1780px;
+    height: 950px;
+}
+
+.d-block{
+    height: 950px;
+}
+
+.carousel-control-prev{
+ margin-left: -163px;
+ 
+}
+.carousel-control-next{
+     margin-right:  -163px;
+}
+#now-showing{
+    position: absolute;
+    margin-top: 60px;
+    margin-left:220px;
+    color: white;
+}
+.bottom-nav{
+    display: flex;
+    flex-direction: row;
+    margin-left:60px;
+    margin-bottom:10px ;
+    font-size: 1.2em;
+}
+.wrapImg{
+    display: flex;
+    
+    flex-wrap: wrap;
+}
+.img-movies{
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    height: 600px;
+    background: linear-gradient(black 60%,rgb(218, 218, 218));
+    margin:50px;  
+    border-radius: 4px;
+}
+#img-cover{
+    width: 250px;
+    height: 400px;
+    margin-top: 40px;
+    
+}
+.container-showMovies{
+    width: 1700px;
+    height: 1500px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 7em;
+    margin-top: 4em;
+}
+#movie-name{
+    position: absolute;
+    margin-top:445px ;
+    color: white;
+    font-size:1.6em ;
+}
+/*.img-movies:hover{
+    opacity: 0.4;
+    cursor: pointer;
+}*/
+/*.hidden{
+    
+}
+.img-hidden{
+    position: absolute;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 250px;
+    height: 400px;
+    transition: all 0.4s ease 0s;
+    transition-property: all;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    z-index: 1;
+}
+#fav,#play-medias{
+    text-decoration: none;
+    outline-style: none;
+}*/
+.fa-heart{
+    position: absolute;
+    margin-left: 260px;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: aliceblue;
+}
+.fa-tag{
+    position: absolute;
+    color: aliceblue;
+    font-size: 1.1em;
+    margin-top:6px ;
+}
+.movieType{
+    position: absolute;
+    margin-top:485px; 
+    margin-left:-250px ;
+}
+#movie-type{
+    position: absolute;
+    color: white;
+    margin-left:25px ;
+    font-size: 1.06em;
+}
+.fa-hourglass-half{
+    position: absolute;
+    color: white;
+    font-size: 1.1em;
+    margin-top:4px ;
+
+}
+#movie-time{
+    color: white;
+    margin-left:25px ;
+    font-size: 1.04em;
+}
+.movieTime{
+    position: absolute;
+    margin-top:516px; 
+    margin-left:-155px ;
+}
+.fa-volume-up{
+     position: absolute;
+    color: white;
+    font-size: 1.1em;
+    margin-top:4px ;
+}
+.movieSub{
+    position: absolute;
+    margin-top:545px; 
+    margin-left:-165px ;
+}
+#movie-sub{
+    color: white;
+    margin-left:25px ;
+    font-size: 1.03em;
+}
+/*.fa-play-circle{
+    cursor: pointer;
+    float: left;
+    padding-top: 0.2em;
+    padding-left: 0.2em;
+    font-size: 3em;
+}*/
+
+
+/*Theater*/
+
+.img-headerTheater{
+    display: flex;
+    justify-content: center;
+}
+#headImg{
+    width: 1100px;
+    height: 500px
+}
+.brand-wrapper{
+    display: flex;
+    flex-direction: row;
+    margin-top: 150px;
+    margin-left: 400px;
+    width: 1200px;
+}
+.icon-wrapper{
+    display: flex;
+    justify-content: center;
+    background-color: white; 
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 550px;
+    height: 200px;
+}
+.type-theater{
+    margin-top: 55px;
+    width: 200px;
+    height: 100px;
+}
+.section-system{
+    display: flex;
+    justify-content: center;
+    margin-top: 300px;
+}
+.system-title{
+    position: absolute;
+    margin-top: -80px;
+    color: white;
+    font-size: 2em;
+}
+.tab-wrapper{
+    display: flex;
+    flex-direction: row;
+    width: 1500px;
+}
+.system-text{
+    color: white;
+}
+
+
+/* each movie */
+#name-eachMovie{
+    color: aliceblue;
+}
+.main-container{
+    display: flex;
+    height: 850px;
+}
+.container-left{
+    width: 800px;
+    padding-top: 150px;
+    padding-left: 450px;
+    float: left;
+}
+.container-right{
+    position: relative;
+    float:right;
+    width: 800px;
+    padding-top: 200px;
+    padding-left: 200px;
+}
+.shadow-sm{
+    width: 400px;
+}
+#each-movie-type{
+    color: aliceblue;
+}
+#each-movie-time{
+    color: aliceblue;
+}
+#each-movie-sub{
+    color: aliceblue;
+}
+.submitted{
+    color: aliceblue;
+}
+
+
+/*movies*/
+.btn-group{
+    position: absolute;
+    margin-top: 550px;
+    margin-left: -130px;
+    background-color: black;
+    border-radius: 5px;
+}
+.btn-addMovie{
+    display: flex;
+    margin-left: 190px;
+}
+
+
+/*add movie*/
+.fa-upload{
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 4em;
+}
+.addMovie{
+    width: 500px;
+    margin-top: 25px;
+}
+.addMovie-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+.btn-add{
+    margin-top: 30px;
+    margin-left: 230px;
+}
+.go-back{
+    text-decoration: none;
+    color: #54C571;
+}
+
+/*add comment*/
+.fa-comments{
+    display: flex;
+    justify-content: center;
+    font-size: 4em;
+    color: white;
+}
+.form-label{
+    color: aliceblue;
+}
+.container-addcomment{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+.newcomment{
+    width: 500px;
+    margin-top: 25px;
+}
+.btnSubmit{
+    margin-top: 30px;
+    margin-left: 220px;
+}

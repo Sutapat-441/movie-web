@@ -1,0 +1,23 @@
+<%- include('../partials/header.ejs') %>
+</head>
+<body>
+<%- include('../partials/navbar.ejs') %>
+
+
+    <div class="container container-addcomment">
+        <form action="/movies/<%= movies._id %>/review" method="POST">
+            <i class="fa fa-comments"></i>
+            <!-- <div class="form-floating newcomment">
+                <input type="text" class="form-control" name="comment[author]" placeholder="Your username">
+                <label for="floatingInput">Author</label>
+            </div> -->
+            <div class="form-floating newcomment">
+                <input type="text" class="form-control" name="comment[text]" placeholder="Review">
+                <label for="floatingInput">Review</label>
+            </div>
+            <button type="submit" class="btn btn-primary btnSubmit">Submit</button><br>
+            <a href="/movies" class="go-back"> << Go back</a>
+        </form>
+    </div>
+
+<%- include('../partials/footer.ejs') %>
