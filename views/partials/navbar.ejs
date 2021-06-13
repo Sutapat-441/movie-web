@@ -1,14 +1,14 @@
 
-<header class="p-3 bg-dark text-white">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+<header class="p-3 bg-transparent text-white ">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start nav-bar">
       <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
         <svg class="bi me-2" width="40" height="32">
-          <use xlink:href="#bootstrap" />
+          <use xlink:href="#bootstrap"/>
         </svg>
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" id="nav-tab">
-        <li><a href="/" class="nav-link px-2 text-white" id="home-tab">Cineflix</a></li>
+        <li><a href="/" class="nav-link px-2 text-white" id="home-tab"><img src="/images/logo-web.png" class="logo-web"></a></li>
         <li><a href="/movies" class="nav-link px-2 text-white">Now showing</a></li>
         <li><a href="/theaters" class="nav-link px-2 text-white">Theater</a></li>
       </ul>
@@ -16,7 +16,7 @@
 
       <% if(!currentUser) {%>
         <div class="text-end">
-          <a href="/logIn" class="btn btn-outline-light me-2 rounded-circle"><i class="fa fa-user"></i></a>
+          <a href="/logIn" class="btn rounded-circle me-2 login-btn"><i class="fa fa-user"></i></a>
           <a href="/signUp" class="btn btn-outline-light me-2 sing-up-btn"> <span class="charac-text"> Sign-up </span> </a>
         </div>
         <%} else{%>
@@ -31,7 +31,6 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item" href="/user/<%=currentUser._id %>">Setting</a></li>
-            <li><a class="dropdown-item" href="/history">History</a></li>
             <li><a class="dropdown-item" href="/favorite">Favorite</a></li>
             <li><a class="dropdown-item" href="/logout">Log out</a></li>
           </ul>
@@ -52,12 +51,21 @@
   <% } %>
 </div>
 
-<form action="/movies/search" method="POST">
-  <div class="under-nav">
-    <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" id="searchMovies">
-      <i class="fa fa-search"></i>
-      <input type="search" name="movieSearch" class="search" placeholder="Search Movies...">
+<div class="container position-relative">
+  <form action="/movies/search" method="POST">
+    <div class="row position-absolute top-0 end-0">
+      <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" id="searchMovies">
+        <i class="fa fa-search"></i>
+        <input list="movies" type="text" name="movieSearch" class="search rounded-pill " placeholder=" Search Movies...">
+        <datalist id="movies">
+          <% movies.forEach(movies => {%>
+            <option value="<%= movies.name %>">
+          <% }); %>  
+        </datalist>
+      </div>
+      <div class="col-2">
+        <button type="submit" id="search-button" class="btn me-2 search-btn mt-3">Search</button>
+      </div>
     </div>
-    <button type="submit" id="search-button" class="btn btn-outline-light me-2">Search</button>
-  </div>
-</form>
+  </form>
+</div>

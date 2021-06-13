@@ -1,6 +1,13 @@
 body{
-    background: white;
+    background-color: black;
 } 
+.logo-web{
+    height: 1.4em;
+}
+.search-btn{
+    background-image:linear-gradient(90deg, #ff00cc 0%,#333399 100% );
+    color: white;
+}
 .spinner-wrapper{
     width: 100%;
     height: 100%;
@@ -68,7 +75,7 @@ body{
     margin-right: 0.5em;
     margin-top: 1.5em;
 }
-#searchMovies{
+/* #searchMovies{
     display: flex;
     width:314px;
     margin-left:360px;
@@ -81,11 +88,13 @@ body{
     width: 30em;
     margin-top: 1.2em;
     margin-bottom: 1.2em;
-    background: transparent;
-    color: white;
-}
+    border-radius: 20px;
+    background: white;
+    color: black;
+} */
+
 .search::placeholder{
-    color: aliceblue;
+    color: black;
 }
 #search-button{
     position: relative;
@@ -95,7 +104,8 @@ body{
 .under-nav{
     display: flex;
     flex-direction: row;
-    margin-left: 830px;
+    margin-top: 15px;
+    margin-left: 1110px;
 }
 .tab-anchor{
     display: flex;
@@ -122,16 +132,22 @@ body{
     color: aliceblue;
 }
 .fa-user{
-    font-size: 1em;
+    font-size: 1.2em;
 }
 .sing-up-btn{
     border: none;
 }
-
+.login-btn{
+    background: white;
+    color: black;
+}
+.login-btn:hover{
+    color: #e4287c;
+}
 
 
 /*home*/
-#carouselExampleCaptions{
+/* #carouselExampleCaptions{
     margin: 0 auto;
     width: 1780px;
     height: 950px;
@@ -139,21 +155,21 @@ body{
 
 .d-block{
     height: 950px;
-}
+} */
 
-.carousel-control-prev{
+/* .carousel-control-prev{
  margin-left: -163px;
  
-}
-.carousel-control-next{
+} */
+/* .carousel-control-next{
      margin-right:  -163px;
-}
-#now-showing{
+} */
+/* #now-showing{
     position: absolute;
     margin-top: 60px;
-    margin-left:220px;
-    color: black;
-}
+    margin-left:70px;
+    color: white;
+} */
 .bottom-nav{
     display: flex;
     flex-direction: row;
@@ -161,35 +177,57 @@ body{
     margin-bottom:10px ;
     font-size: 1.2em;
 }
-.wrapImg{
-    display: flex;
-    
-    flex-wrap: wrap;
+/* .wrapImg{
+     display: flex; 
+     justify-content: space-between; 
+    margin-top: 10em;
+    background-color: #ff00cc;
+} */
+/* .img-movies{
+    background-color: aliceblue;
+} */
+.showdetail-hover{
+    width: 200px;
+    opacity: 0;position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: .9s ease;
+
 }
-.img-movies{
+.img-movies:hover {
+    justify-content: center;
+}
+.img-movies:hover .card-img-top{
+    opacity: 0.5;
+}
+.img-movies:hover .showdetail-hover{
+    opacity: 1;
+}
+.movie-desc{
+    color: white;
     display: flex;
     justify-content: center;
-    width: 300px;
-    height: 600px;
-    background: linear-gradient(black 60%,rgb(218, 218, 218));
-    margin:50px;  
-    border-radius: 4px;
+    margin-left: 20px;
 }
 #img-cover{
-    width: 250px;
-    height: 400px;
+    display: flex;
+    width: 300px;
+    height: 500px;
     margin-top: 40px;
     
 }
-.container-showMovies{
-    width: 1700px;
-    height: 1500px;
-    display: flex;
-    flex-direction: row;
-    margin-left: 7em;
-    margin-top: 4em;
-}
+/* .hidden{
+    display: none;
+} */
+/* .container-showMovies{
+    width: 1300px;
+    height: 900px;
+
+} */
 #movie-name{
+    display: block;
     position: absolute;
     margin-top:445px ;
     color: white;
@@ -220,11 +258,9 @@ body{
     outline-style: none;
 }*/
 .fa-heart{
-    position: absolute;
-    margin-left: 260px;
     cursor: pointer;
     font-size: 1.5em;
-    color: aliceblue;
+    color: white;
 }
 .fa-tag{
     position: absolute;
@@ -232,7 +268,7 @@ body{
     font-size: 1.1em;
     margin-top:6px ;
 }
-.movieType{
+/* .movieType{
     position: absolute;
     margin-top:485px; 
     margin-left:-250px ;
@@ -242,7 +278,7 @@ body{
     color: white;
     margin-left:25px ;
     font-size: 1.06em;
-}
+} */
 .fa-hourglass-half{
     position: absolute;
     color: white;
@@ -250,7 +286,7 @@ body{
     margin-top:4px ;
 
 }
-#movie-time{
+/* #movie-time{
     color: white;
     margin-left:25px ;
     font-size: 1.04em;
@@ -259,14 +295,14 @@ body{
     position: absolute;
     margin-top:516px; 
     margin-left:-155px ;
-}
+} */
 .fa-volume-up{
      position: absolute;
     color: white;
     font-size: 1.1em;
     margin-top:4px ;
 }
-.movieSub{
+/* .movieSub{
     position: absolute;
     margin-top:545px; 
     margin-left:-165px ;
@@ -275,7 +311,7 @@ body{
     color: white;
     margin-left:25px ;
     font-size: 1.03em;
-}
+} */
 /*.fa-play-circle{
     cursor: pointer;
     float: left;
@@ -292,16 +328,16 @@ body{
     justify-content: center;
 }
 #headImg{
-    width: 1100px;
-    height: 500px
+    width: 1910px;
+    height: 800px
 }
-.brand-wrapper{
+/* .brand-wrapper{
     display: flex;
     flex-direction: row;
     margin-top: 150px;
     margin-left: 400px;
     width: 1200px;
-}
+} */
 .icon-wrapper{
     display: flex;
     justify-content: center;
@@ -343,30 +379,22 @@ body{
 }
 .main-container{
     display: flex;
+    justify-content: center;
     height: 850px;
 }
 .container-left{
-    width: 800px;
+    width: 450px;
     padding-top: 150px;
-    padding-left: 450px;
-    float: left;
 }
 .container-right{
     position: relative;
-    float:right;
     width: 800px;
     padding-top: 200px;
-    padding-left: 200px;
 }
 .shadow-sm{
     width: 400px;
 }
-.card-body{
-    
-}
-.justify-content-between{
-    
-}
+
 #each-movie-type{
     color: aliceblue;
 }
@@ -389,10 +417,11 @@ body{
     background-color: black;
     border-radius: 5px;
 }
-.btn-addMovie{
+/* .btn-addMovie{
     display: flex;
     margin-left: 190px;
-}
+    background-color: aliceblue;
+} */
 
 
 /*add movie*/
@@ -442,4 +471,37 @@ body{
 .btnSubmit{
     margin-top: 30px;
     margin-left: 220px;
+}
+
+/*add cinema*/
+.title-cinema{
+    color: white;
+}
+
+datalist {
+    display: none;
+  }
+
+.payment-details{
+    border-image: linear-gradient(45deg, #ff00cc 0%,#333399 100%) 1;
+}
+.btn-comfirmed{
+    background-image: linear-gradient(45deg, #ff00cc 0%,#333399 100% ) !important;
+}
+
+.comfirmed-box{
+    border-image: linear-gradient(45deg, #ff00cc 0%,#333399 100%) 1;
+}
+.check-icon{
+    background-image: linear-gradient(0deg,#ff00cc, #333399) !important;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.confirmed-text{
+    background-image: linear-gradient(0deg,#ff00cc, #333399) !important;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.border-now{
+    border-image: linear-gradient(45deg, #ff00cc 0%,#333399 100%) 1;
 }

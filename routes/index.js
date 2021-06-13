@@ -1,5 +1,3 @@
-const admin = require('../models/admin');
-
 var express = require('express'),
     router  = express.Router(),
     Movie   = require('../models/movies'),
@@ -46,7 +44,15 @@ router.get('/',function(req,res){
         if(err){
             console.log(err);
         }else{
-            res.render('Home.ejs' , {movies: allMovies});
+            User.find({}, function(err,foundUser){
+                if(err){
+                    console.log(err);
+                } else {
+                    console.log(foundUser);
+                    res.render('Home.ejs' , {movies: allMovies, user:foundUser});
+                }
+            })
+            
         }
     });
 });

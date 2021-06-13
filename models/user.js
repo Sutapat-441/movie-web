@@ -9,11 +9,25 @@ var UserSchema = new mongoose.Schema({
     profileImage:String,
     firstname:String,
     lastname:String,
+    booking:[{
+        schedule:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Schedule'
+        },
+        seat:Array
+    }],
     role:{
         type : String,
         enum :['member','admin'],
         default:'member'
     },
+    like:[{
+        id:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'Movie'
+        },
+        moviename:String
+    }]
     //isAdmin: {type: Boolean, default: false},
     // like : [
     //     {

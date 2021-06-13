@@ -1,0 +1,19 @@
+<%- include('../partials/header.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../partials/loadingScreen.ejs') %>
+            <%- include('../partials/navbar.ejs') %>
+
+                <div class="container">
+                    <form action="/major/new" method="POST">
+                        <div class="row">
+                            <input type="text" name="major[name]" >Name
+                        </div>
+                        <button type="submit">Add</button>
+                    </form>
+                </div>
+                <a href="/movies" class="go-back">
+                    << Go back</a>
+
+                        <%- include('../partials/footer.ejs') %>

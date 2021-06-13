@@ -1,93 +1,304 @@
 <%- include('../partials/header.ejs') %>
-<link rel="stylesheet" href="../3/app3.css">
-</head>
-<body>
-<%- include('../partials/lodingScreen.ejs') %>
-<%- include('../partials/navbar.ejs') %>
-  <%- include('../partials/headerforEachmovies.ejs') %>
+  <link rel="stylesheet" href="../3/app3.css">
+  <script src="../../eachMovies.js" defer></script>
+  </head>
 
-    <div class="main-container">
+  <body>
+    <%- include('../partials/loadingScreen.ejs') %>
+      <%# include('../partials/navbar.ejs') %>
 
-      <div class="container-left">
-
-        <div class="card shadow-sm">
-          <img src="<%= movies.image%>" class='card-img-top img-eachmovie' height="600px">
-          <div class="card-body">
-            <h5 class='card-title'></h5>
-            <p class="card-text"></p>
-
-          </div>
-
+      <header class="p-3 bg-transparent text-white">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+              <use xlink:href="#bootstrap" />
+            </svg>
+          </a>
+      
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" id="nav-tab">
+            <li><a href="/" class="nav-link px-2 text-white" id="home-tab"><img src="/images/logo-web.png" class="logo-web"></a></li>
+            <li><a href="/movies" class="nav-link px-2 text-white">Now showing</a></li>
+            <li><a href="/theaters" class="nav-link px-2 text-white">Theater</a></li>
+          </ul>
+      
+      
+          <% if(!currentUser) {%>
+            <div class="text-end">
+              <a href="/logIn" class="btn rounded-circle me-2 login-btn"><i class="fa fa-user"></i></a>
+              <a href="/signUp" class="btn btn-outline-light me-2 sing-up-btn"> <span class="charac-text"> Sign-up </span> </a>
+            </div>
+            <%} else{%>
+              <svg class="bd-placeholder-img " height="50">
+                <img id="userFace"
+                  src="https://shop.line-scdn.net/themeshop/v1/products/0e/c9/dc/0ec9dca1-d0a1-4fb5-88ed-dc59de677cf7/39/WEBSTORE/icon_198x278.png"
+                  class="rounded-circle">
+              </svg>
+              <a class="nav-link dropdown-toggle text" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= currentUser.username %>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="/user/<%=currentUser._id %>">Setting</a></li>
+                <li><a class="dropdown-item" href="/favorite/<%=currentUser._id %>">Favorite</a></li>
+                <li><a class="dropdown-item" href="/logout">Log out</a></li>
+              </ul>
+              <% } %>
         </div>
-
+      
+      </header>
+      <div class="container">
+      <% if(error && error.lenght> 0){ %>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+        </div>
+      <% } %>
+      <% if(success && success.lenght> 0){ %>
+        <div class="alert alert-success" role="alert">
+          <%= success %>
+        </div>
+      <% } %>
+      </div>
+      
+      <div class="container">
+        <form action="/movies/search" method="POST">
+        <div class="under-nav">
+          <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" id="searchMovies">
+            <i class="fa fa-search"></i>
+            <input list="movies" type="text" name="movieSearch" class="search rounded-pill " placeholder=" Search Movies...">
+            <datalist id="movies">
+              <% allmovies.forEach(allmovies => {%>
+                <option value="<%= allmovies.name %>">
+              <% }); %>  
+            </datalist>
+          </div>
+          <button type="submit" id="search-button" class="btn me-2 search-btn mt-3">Search</button>
+        </div>
+        </form>
       </div>
 
-      <div class="container-right">
-        <h1 id="name-eachMovie">
-          <%= movies.name %>
-        </h1>
-        <div class="eachMovieType">
-          <i class="fa fa-tag"></i>
-          <p id="each-movie-type">
-            <%= movies.type %>
-          </p>
-        </div>
-        <div class="eachMovieTime">
-          <i class="fa fa-hourglass-half"></i>
-          <p id="each-movie-time">
-            <%= movies.time %> mins.
-          </p>
-        </div>
-        <div class="eachMovieSub">
-          <i class="fa fa-volume-up"></i>
-          <p id="each-movie-sub">
-            <%= movies.language %>
-          </p>
-          <!-- <p class="submitted">Submitted by <%= movies.author.username %></p> -->
-        </div>
-
-    </div>
-      <iframe width="560" height="315" src="<%=movies.URL%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-
-
-
-    <!-- <%# if(currentUser && movies.auther.id.equals(currentUser._id)){ %>
-      <a href="/movies/<%# movies._id %>/edit" class="btn btn-warning">Edit</a>
-      <form action="/movies/<%# movies._id %>?_method=DELETE" method="POST">
-        <button type="submit" class="btn btn-danger">Delete</button>
-      </form>
-      <%# } %> -->
-
-
-    <% if(currentUser !=undefined){ %>
-      <% if(currentUser.role=='admin' ){ %>
-        <div class="btn-group btn-actionForAdmin">
-          <a href="/movies/<%= movies._id %>" class="btn btn-sm btn-outline-secondary">View</a>
-          <a href="/movies/<%= movies._id %>/edit" class="btn btn-warning">Edit</a>
-          <form action="/movies/<%= movies._id %>?_method=DELETE" method="POST">
-            <button type="submit" class="btn btn-danger">Delete</button>
-          </form>
-        </div>
-        <% } %>
-          <% } %>
-
-
-            <div class="comment-container">
-              <h1 class="head-review">Reviews</h1><i class="fa fa-comments comment-icon"></i>
-              <% movies.comment.forEach(function(comment){ %>
-                <p>
-                  <strong>
-                    <%= comment.author.username %>
-                  </strong> - <%= comment.text %>
-                </p>
-                <% if(currentUser && comment.auther.id.equals(currentUser._id)){ %>
-                  <a href="/movies/<%= movies._id %>/comment/<%= comment._id %>/edit" class="btn btn-warning">Edit</a>
-                  <form action="/movies/<%= movies._id %>/comment/<%=comment._id %>?_method=DELETE" method="POST">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                  </form>
-                  <% } %>
-                    <% }); %>
+      <div class="container mt-5">
+        <div class="row">
+            <div class="progress" style="height: 1px;">
+                <div class="progress-bar bg-warning" role="progressbar" style="width:<%= 0*100/3 %>%;"></div>
             </div>
+            <div class="col position-relative">
+                <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-warning rounded-pill process-forMovie" style="width: 2rem; height:2rem;">1</button>
+            </div>   
+            <div class="col position-relative">
+                <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-light rounded-pill process-forMovie" style="width: 2rem; height:2rem;">2</button>
+            </div>  
+            <div class="col position-relative">
+                <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-light rounded-pill process-forMovie" style="width: 2rem; height:2rem;">3</button>
+            </div>  
+            <div class="col-0 position-relative">
+                <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-light rounded-pill process-forMovie" style="width: 2rem; height:2rem;">4</button>
+            </div>  
+        </div>
+        <div class="row mt-5">
+            <div class="col position-relative">
+                <div class="text-primary position-absolute top-0 start-0 translate-middle text-warning">
+                    เลือกรอบฉาย
+                </div>
+            </div>   
+            <div class="col position-relative">
+                <div class="text-primary position-absolute top-0 start-0 translate-middle text-light">
+                    เลือกที่นั่ง
+                </div>
+            </div>  
+            <div class="col position-relative">
+                <div class="text-primary position-absolute top-0 start-0 translate-middle text-light">
+                    ชำระเงิน
+                </div>
+            </div>  
+            <div class="col-0 position-relative">
+                <div class="text-primary position-absolute top-0 start-100 translate-middle text-center text-light" style="width: 100px;">
+                        เสร็จสิ้น
+                </div>
+            </div>  
+        </div>
+    </div>
 
-            <%- include('../partials/footer.ejs') %>
+    
+                  <div class="container">
+                    <% if(currentUser !=undefined){ %>
+                      <% if(currentUser.role=='admin' ){ %>
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          </a>
+                          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a href="/movies/<%= movies._id %>/edit" class="dropdown-item">Edit</a></li>
+                            <li>
+                              <a role="button" data-bs-toggle="modal" data-bs-target="#deleteModal" class="dropdown-item">Delete</a>
+                            </li>
+                          </ul>
+                        <% } %>
+                      <% } %>
+
+                      <!-- checkว่า userเคยlikeรึยัง -->
+                      <%# if (currentUser.like.moviename.equals(movies.name)){ %>
+                        <!-- <div class="unlike-btn">
+                          <form action="/movies/<%# movies._id %>/unlike" method="POST">
+                            <button type="submit" class="btn btn-outline-warning btn-like">Favorite <i class="fa fa-gratipay"></i></button>
+                          </form>
+                        </div> -->
+                   <%# }else{ %>
+                        <div class="like-btn">
+                          <!-- <form action="/movies/<%# movies._id %>/like" method="POST"> -->
+                            <button type="submit" class="btn btn-outline-light btn-like">Favorite <i class="fa fa-gratipay"></i></button>
+                          <!-- </form> -->
+                        </div>
+                   <%# } %>
+                    <div class="main-container">
+                      <div class="container-left">
+                        <div class="card shadow-sm">
+                          <img src="<%= movies.image%>" class='card-img-top img-eachmovie' height="600px">
+                          <div class="card-body">
+                            <h5 class='card-title'></h5>
+                            <p class="card-text"></p>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                      <div class="container-right">
+                        <div class="wrap-desc">                          
+                          <h1 id="name-eachMovie">
+                            <%= movies.name %>
+                          </h1>
+                          <div class="eachMovieType">
+                            <i class="fa fa-tag"></i>
+                            <p id="each-movie-type">
+                              <%= movies.type %>
+                            </p>
+                          </div>
+                          <div class="eachMovieTime">
+                            <i class="fa fa-hourglass-half"></i>
+                            <p id="each-movie-time">
+                              <%= movies.time %> mins.
+                            </p>
+                          </div>
+                          <div class="eachMovieSub">
+                            <i class="fa fa-volume-up"></i>
+                            <p id="each-movie-sub">
+                              <%= movies.language %>
+                            </p>
+                            <!-- <p class="submitted">Submitted by <%# movies.author.username %></p> -->
+                          </div>
+
+
+
+                          <div class="trailer">
+                            <iframe class="trailer-movie" width="560" height="315" src="<%=movies.URL%>"
+                              title="YouTube video player" frameborder="0"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowfullscreen></iframe>
+                          </div>
+                          <div class="select-showtime">
+                            <div class="row">
+                              <div class="col">
+                                <div class="select-date">
+                                  <% let today=new Date(); %>
+                                    <label class="fw-bold form-label">เลือกวันฉาย</label>
+                                    <select id="select-display-date" class="form-select" name="date">
+                                      <option value="<%= today %>">Today <%= today.toString().slice(0,15) %>
+                                      </option>
+                                      <% for(let i=1 ; i < 31 ; i ++) {%>
+                                        <% let nextday=new Date(today.getFullYear(), today.getMonth(),today.getDate() +
+                                          i );%>
+                                          <option value="<%= nextday %>">
+                                            <%= nextday.toString().slice(0,15) %>
+                                          </option>
+                                          <% }; %>
+                                    </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="container" id="schedule-movies">
+                    
+                  </div>
+
+
+<!-- มาทำตรงนี้ด้วยนะ -->
+
+                      <div class="container me-5 mb-3 mt-5">
+                        <label class="review-title text-light ms-5"> <h2 class="ms-5"> Review </h2></label>
+                        <a href="/movies/<%= movies._id %>/review/new" class="btn fs-2 text "><i class="fa fa-edit btn-addcomment"></i></button></a>
+                      </div>
+                        <% movies.comment.forEach(function(comment){ %>
+                          <div class="container comment-container rounded-3 shadow p-3 border-top border-primary border-5 bg-light position-relative" style="width: 500px;">
+                            <div class="row form-inline " style="width: 500px;">
+                              <div class="col-10 text-center">
+                                <strong>
+                                  <%= comment.author.username %>
+                                </strong> - <%= comment.text %>
+                              </div>
+                              <div class="col-1 position-absolute end-0 translate-middle">
+                                <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                  </a>
+                                  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="/movies/<%= movies._id %>/review/<%= comment._id %>/edit">Edit</a></li>
+                                    <li>
+                                      <a role="button" data-bs-toggle="modal" data-bs-target="#deletecommentModal" class="dropdown-item">Delete</a>
+                                      <!-- <form action="/movies/<%# movies._id %>/review/<%#comment._id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="dropdown-item">Delete</button>
+                                      </form> -->
+                                    </li>
+                                  </ul>
+                                <% } %>
+                              </div>
+                            </div>
+                          </div>
+                        
+
+                            <div class="modal fade" id="deletecommentModal" tabindex="-1">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <h5 class="modal-title ed-mol">Delete Comment</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                      </div>
+                                      <%console.log(comment._id);%>
+                                      <form action="/movies/<%= movies._id %>/review/<%= comment._id %>?_method=DELETE" method="POST">
+                                        <div class="modal-body" style="color: black;">
+                                            You want to delete comment ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-conf">Confirm</button>
+                                        </div>
+                                    </form>
+                                  </div>
+                              </div>
+                          </div>
+                        <% }); %>
+
+                          <!-- <button type="submit" class="dropdown-item">Delete</button> -->
+                            <div class="modal fade" id="deleteModal" tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title ed-mol" >Delete Movies</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <form action="/movies/<%= movies._id %>?_method=DELETE" method="POST">
+                                          <div class="modal-body" style="color: black;">
+                                              You want to delete <%= movies.name %> ?
+                                          </div>
+                                          <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                              <button type="submit" class="btn btn-conf">Confirm</button>
+                                          </div>
+                                      </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                          <!-- ถ้ากดจองเวลาแล้วให้เพิ่มหน้าreserveมาไว้ด้านล่างต่อได้เลย -->
+<%- include('../partials/footer.ejs') %>

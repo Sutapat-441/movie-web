@@ -1,0 +1,54 @@
+<%- include('../partials/header.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../partials/loadingScreen.ejs') %>
+            <%- include('../partials/navbar.ejs') %>
+
+                <div class="container addCinema-container">
+                    <div class="row">
+                        <i class="fa fa-upload"></i>
+                        <h1 class="title-cinema">Add Schedule</h1>
+                    </div>
+                    <div class="row">
+                        <form action="/schedule/new" method="POST" enctype="multipart/from-data">
+                            <div class="row mb-2">
+                                <div class="input-group">
+                                    <label class="input-group-text" for="floatingInput">Show time</label>
+                                    <input type="datetime-local" class="form-control addCinema" id="floatingInput" name="schedule[showtime]" placeholder="Cinema name">
+                                </div>
+                            </div>
+                            <div class="cinema-system">
+                                <select class="form-select" name="schedule[movie]" aria-label="Default select example">
+                                    <option selected>Movies</option>
+                                    <% movies.forEach(function(movies){ %>
+                                        <option value="<%= movies._id %>"><%= movies.name %></option>
+                                    <% }); %>
+                                  </select>
+                            </div>
+                            <div class="cinema-system">
+                                <select class="form-select" name="schedule[cinema]" aria-label="Default select example">
+                                    <option selected>Cinema</option>
+                                    <% cinemas.forEach(function(cinemas){ %>
+                                        <option value="<%= cinemas._id %>"><%= cinemas.name + ' ' + cinemas.major.name  %></option>
+                                    <% }); %>
+                                  </select>
+                            </div>
+                            <!-- <div class="cinema-system">
+                                <select class="form-select" name="cinema[system]" aria-label="Default select example">
+                                    <option selected>ระบบฉาย</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="3D">3D</option>
+                                    <option value="4D">4D</option>
+                                  </select>
+                            </div> -->
+    
+                        </div>
+                 </div>
+                <button type="submit" class="btn btn-primary btn-add">Add</button><br>
+                <a href="/movies" class="go-back">
+                    << Go back</a>
+                        </form>
+                        </div>
+                        </div>
+                        <%- include('../partials/footer.ejs') %>

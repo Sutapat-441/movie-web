@@ -38,11 +38,12 @@ router.post('/',middleware.isLoggedIn,function(req,res){
 });
 
 router.get('/:comment_id/edit', middleware.checkReviewOwner, function(req,res){
-    Comment.findById(req.params._id, function(err,foundComment){
+    Comment.findById(req.params.comment_id, function(err,foundComment){
+        // console.log(foundComment);
         if(err){
             res.redirect('back');
         } else{
-            res.redirect('comment/edit.ejs', {movies_id: req.params.id, comment: foundComment});
+            res.render('comment/edit.ejs', {movies_id: req.params.id, comment: foundComment});
         }
     });
 });
@@ -57,7 +58,7 @@ router.put('/:comment_id', middleware.checkReviewOwner, function(req,res){
     });
 });
 
-router.delete('/:id',middleware.checkReviewOwner, function(req,res){//ลบแต่หน้านั้นยังไม่หาย
+router.delete('/:comment_id',middleware.checkReviewOwner, function(req,res){//ลบแต่หน้านั้นยังไม่หาย
     Comment.findOneAndRemove(req.params.comment_id, function(err){
         if(err){
             res.redirect('back');

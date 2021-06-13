@@ -1,11 +1,11 @@
 <%- include('../partials/header.ejs') %>
 </head>
 <body>
-<%- include('../partials/lodingScreen.ejs') %>
+<%- include('../partials/loadingScreen.ejs') %>
 <%- include('../partials/navbar.ejs') %>
 
     <div class="container addMovie-container">
-        <form action="/movies/new" method="POST" enctype="multipart/from-data">
+        <form action="/movies/new" method="POST" enctype="multipart/form-data">
             <i class="fa fa-upload"></i>
             <div class="form-floating">
                 <input type="text" class="form-control addMovie" id="floatingInput"name="movies[name]" placeholder="moviename">
@@ -31,8 +31,12 @@
                 <input type="text" class="form-control addMovie"id="floatingInput" name="movies[language]" placeholder="Language of movie">
                 <label for="floatingInput">Language</label>
             </div>
+            <div class="form-floating">
+                <input type="text" class="form-control addMovie"id="floatingInput" name="movies[URL]" placeholder="Trailer of movie">
+                <label for="floatingInput">Trailer (NOTE : replace /embed/ at watch?v=)</label>
+            </div>
             <button type="submit" class="btn btn-primary btn-add">Add</button><br>
             <a href="/movies" class="go-back"> << Go back</a>
         </form>
     </div>
-    <%- include('../partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>

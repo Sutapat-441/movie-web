@@ -11,7 +11,7 @@ var movieData = [
         type: "Fantacy",
         time: "110",
         language: ["ENG","TH"],
-        URL:'https://www.youtube.com/watch?v=iwROgK94zcM'
+        URL:'https://www.youtube.com/embed/iwROgK94zcM'
     },
     {
         name: "Ponyo",
@@ -19,7 +19,7 @@ var movieData = [
         type: "Fantacy",
         time: "110",
         language: ["ENG","TH"],
-        URL:'https://www.youtube.com/watch?v=CsR3KVgBzSM'
+        URL:'https://www.youtube.com/embed/CsR3KVgBzSM'
     },
     {
         name: "Spirit Away",
@@ -27,7 +27,7 @@ var movieData = [
         type: "Fantacy",
         time: "110",
         language: ["ENG","TH"],
-        URL:'https://www.youtube.com/watch?v=ByXuk9QqQkk'
+        URL:'https://www.youtube.com/embed/ByXuk9QqQkk'
     },
     {
         name: "Totoro",
@@ -35,7 +35,7 @@ var movieData = [
         type: "Fantacy",
         time: "110",
         language: ["ENG","TH"],
-        URL:'https://www.youtube.com/watch?v=92a7Hj0ijLs'
+        URL:'https://www.youtube.com/embed/92a7Hj0ijLs'
     }
 ];
 

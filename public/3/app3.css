@@ -8,7 +8,8 @@ body{
     margin-top: 0px;
 }
 .container-right{
-    
+    width: 560px;
+    height: 500px;
 }
 #each-movie-type{
     margin-left: 30px;
@@ -79,11 +80,40 @@ body{
     padding:10px;
     margin-bottom: 20px;
 }
-.comment-icon{
-    display: flex;
+
+.row{
     justify-content: center;
-    color: black;
-    font-size: 3em;
-    margin-top: -55px;
-    margin-left: 200px;
+}
+.head-review{
+    color: white;
+}
+.fa-edit{
+
+    font-size: 1.4em;
+}.fa-heart{
+    font-size: 1.2em;;
+}
+.like-btn{
+    float: right;
+}
+.wrap-desc{
+    display: block;
+    z-index: -1;
+}
+.profile-box{
+    border-image: linear-gradient(45deg, #ff00cc 0%,#333399 100%) 1;
+}
+.major-box{
+    background-image: linear-gradient(0deg, #ff00cc 0%,#333399 100% ) !important;
+}
+.btn-schedule{
+    background-image: linear-gradient(0deg, #ff00cc 0%,#333399 100% ) !important;
+}
+.comment-container{
+    border-image: linear-gradient(45deg, #ff00cc 0%,#333399 100%) 1;
+}
+.btn-addcomment{
+    background-image: linear-gradient(0deg,#ff00cc, #333399) !important;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

@@ -7,19 +7,13 @@ var movieSchema = new mongoose.Schema({ //โครงสร้างข้อ�
     time:String,
     language:Array,
     URL:String,
-    author:{
-        id:{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-        },
-        username: String
-    },
     comment:[
         {
             type:mongoose.Schema.Types.ObjectId,//เรียกข้อมูลมาจากมาจากcomment
             ref:'Comment'
         }
-    ]
+    ],
+    price:Number
 });
 
 // movieSchema.index( { name: "text"} );

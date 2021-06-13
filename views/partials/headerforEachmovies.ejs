@@ -1,39 +1,41 @@
-
-    <div class="step-bar">
-        <div class="container">
-            <ul class="desktop">
-                <li class="step-item active">
-                    <a href="#" class="process-booking">
-                    <div class="no">
-                        1
-                    </div>
-                    <div class="step-name">เลือกรอบฉาย</div>
-                </a>
-            </li>
-            <li class="step-item">
-                <a href="#" class="process-booking">
-                    <div class="no">
-                        2
-                    </div>
-                    <div id="step-two">เลือกที่นั่ง</div>
-                </a>
-            </li>
-            <li class="step-item">
-                <a href="#" class="process-booking">
-                    <div class="no">
-                        3
-                    </div>
-                    <div class="step-name">การชำระเงิน</div>
-                </a>
-            </li>
-            <li class="step-item">
-                <a href="#" class="process-booking">
-                    <div class="no">
-                        4
-                    </div>
-                    <div id="step-four">สิ้นสุด</div>
-                </a>
-            </li>
-        </ul>
+<div class="container mt-5">
+    <div class="row">
+        <div class="progress" style="height: 1px;">
+            <div class="progress-bar" role="progressbar" style="width:<%= 0*100/3 %>%;"></div>
+        </div>
+        <div class="col position-relative">
+            <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-warning rounded-pill process-forMovie" style="width: 2rem; height:2rem;">1</button>
+        </div>   
+        <div class="col position-relative">
+            <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-light rounded-pill process-forMovie" style="width: 2rem; height:2rem;">2</button>
+        </div>  
+        <div class="col position-relative">
+            <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-light rounded-pill process-forMovie" style="width: 2rem; height:2rem;">3</button>
+        </div>  
+        <div class="col-0 position-relative">
+            <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-light rounded-pill process-forMovie" style="width: 2rem; height:2rem;">4</button>
+        </div>  
+    </div>
+    <div class="row mt-5">
+        <div class="col position-relative">
+            <div class="text-primary position-absolute top-0 start-0 translate-middle text-warning">
+                เลือกรอบฉาย
+            </div>
+        </div>   
+        <div class="col position-relative">
+            <div class="text-primary position-absolute top-0 start-0 translate-middle text-light">
+                เลือกที่นั่ง
+            </div>
+        </div>  
+        <div class="col position-relative">
+            <div class="text-primary position-absolute top-0 start-0 translate-middle text-light">
+                ชำระเงิน
+            </div>
+        </div>  
+        <div class="col-0 position-relative">
+            <div class="text-primary position-absolute top-0 start-100 translate-middle text-center text-light" style="width: 100px;">
+                    เสร็จสิ้น
+            </div>
+        </div>  
     </div>
 </div>

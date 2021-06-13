@@ -4,6 +4,27 @@ var Movie = require('../models/movies'),
 
 var middleWareObj = {};
 
+middleWareObj.checkAdmin = function(req, res, next){
+    if(req.isAuthenticated()){
+        User.findById(req.user._id, function(err, foundUser){
+            if(err){
+                req.flash('error', 'Review not found!');
+                return next();
+            } else{
+                if(foundUser.role === 'admin'){
+                    next();
+                } else{
+                    req.flash('error', 'You do not have permission to do this action.')
+                    res.redirect('back');
+                }
+            }
+        });
+    }else{
+        req.flash('error', 'You need to sign in first!');
+        res.redirect('back');
+    } 
+}
+
 middleWareObj.checkReviewOwner = function(req, res, next){
     if(req.isAuthenticated()){
         Comment.findById(req.params.comment_id, function(err, foundComment){
@@ -11,7 +32,7 @@ middleWareObj.checkReviewOwner = function(req, res, next){
                 req.flash('error', 'Review not found!');
                 return next();
             } else{
-                if(foundComment.auther.id.equals(req.user._id) || req.user.role === 'admin'){
+                if(foundComment.author.id.equals(req.user._id) || req.user.role === 'admin'){
                     next();
                 } else{
                     req.flash('error', 'You do not have permission to do this action.')

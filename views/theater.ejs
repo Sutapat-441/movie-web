@@ -3,70 +3,91 @@
 <body>
 <%- include('partials/navbar.ejs') %>
 
-    <div class="container-theater">
-        <div class="img-headerTheater">
-            <img src="https://image.freepik.com/free-photo/rows-red-seats-theater_53876-64710.jpg" id="headImg">
+    <div class="container-theater mt-5">
+        <div class="row img-headerTheater">
+            <img src="https://image.freepik.com/free-photo/rows-red-seats-theater_53876-64710.jpg" style="width: 100%;" id="headImg">
         </div>
     </div>
 
-    <div class="brand-wrapper row">
+    <div class="row brand-wrapper row">
+        <div class="col">
+            <div class="row">
+                <div class="col col-lg-4 col-4 icon-wrapper">
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f1c7366298871.5b112a7571eeb.png" style="width: 100%;" class="type-theater" alt="Emprivé Cineclub">
+                </div>
 
-        <div class="icon-wrapper">
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f1c7366298871.5b112a7571eeb.png"
-                class="type-theater" alt="Emprivé Cineclub">
+                <div class="col col-4 icon-wrapper">
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f1c7366298871.5b112a7571eeb.png" style="width: 100%;"class="type-theater" alt="SF World Cinema">
+                </div>
+            </div>
         </div>
+        <div class="col">
+            <div class="row">
+                <div class="col col-4 icon-wrapper">
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f1c7366298871.5b112a7571eeb.png" style="width: 100%;" class="type-theater" alt="SFX Cinema">
+                </div>
 
-        <div class="icon-wrapper">
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f1c7366298871.5b112a7571eeb.png"
-                class="type-theater" alt="SF World Cinema">
+                <div class="col col-4 icon-wrapper">
+                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f1c7366298871.5b112a7571eeb.png" style="width: 100%;" class="type-theater" alt="SF Cinema">
+                </div>
+            </div>
         </div>
-
-        <div class="icon-wrapper">
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f1c7366298871.5b112a7571eeb.png"
-                class="type-theater" alt="SFX Cinema">
-        </div>
-
-        <div class="icon-wrapper">
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f1c7366298871.5b112a7571eeb.png"
-                class="type-theater" alt="SF Cinema">
-        </div>
-
     </div>
 
-    <div id="anchor-system" class="section-system">
-        <div class="system-tab">
-            <div class="system-title active">ระบบฉาย</div>
+    <div id="anchor-system" class="container section-system">
+        <div class="row justify-content-center">
+            <div class="system-tab">
+                <div class="row">
+                    <div class="system-title active col-2">ระบบฉาย</div>
+                </div>
+            </div>
+            <div class="row tab-wrapper">
+                <div class=" col system-item" style="width: 100%; display: inline-block;">
+                    <img src="/images/normal.jpg" style="width: 200px;" alt="MX4D Cinema">
+                    <div class="system-wrapper">
+                        <button class="btn btn-outline-light" style="width: 200px;" type="button" data-bs-toggle="collapse" data-bs-target="#normal" aria-expanded="false" >Normal</button>
+                    </div>
+                </div>
+                <div class="col system-item" style="width: 100%; display: inline-block;">
+                    <img src="/images/3D.jpg" style="width: 200px;" alt="3D Cinema">
+                    <div class="system-wrapper">
+                        <button class="btn btn-outline-light" style="width: 200px;" type="button" data-bs-toggle="collapse" data-bs-target="#threed" aria-expanded="false" >3D Cinema</button>
+                    </div>
+                </div>
+                <div class="col system-item" style="width: 100%; display: inline-block;">
+                    <img src="/images/4D.jpg" style="width: 200px;" alt="4K">
+                    <div class="system-wrapper">
+                        <button class="btn btn-outline-light" style="width: 200px;" type="button" data-bs-toggle="collapse" data-bs-target="#fourd" aria-expanded="false" >4D Cinema</button>
+                    </div>
+                </div>
+                <!---->
+            </div>
         </div>
-        <div class="tab-wrapper">
-            <div class="system-item" style="width: 100%; display: inline-block;"><img
-                    src="https://m.thaiware.com/upload_misc/software/2020_09/thumbnails/8839_200929134022x8.png"
-                    alt="MX4D Cinema">
-                <div class="system-wrapper">
-                    <div class="system-text">MX4D Cinema</div>
-                </div>
+    </div>
+
+   
+      <div class="row position-relative">
+        <div class="col col-3">
+          <div class="collapse" id="normal">
+            <div class="card card-body">
+              Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
             </div>
-            <div class="system-item" style="width: 100%; display: inline-block;"><img
-                    src="https://m.thaiware.com/upload_misc/software/2020_09/thumbnails/8839_200929134022x8.png"
-                    alt="DOLBY ATMOS">
-                <div class="system-wrapper">
-                    <div class="system-text">DOLBY ATMOS</div>
-                </div>
-            </div>
-            <div class="system-item" style="width: 100%; display: inline-block;"><img
-                    src="https://m.thaiware.com/upload_misc/software/2020_09/thumbnails/8839_200929134022x8.png"
-                    alt="3D Cinema">
-                <div class="system-wrapper">
-                    <div class="system-text">3D Cinema</div>
-                </div>
-            </div>
-            <div class="system-item" style="width: 100%; display: inline-block;"><img
-                    src="https://m.thaiware.com/upload_misc/software/2020_09/thumbnails/8839_200929134022x8.png"
-                    alt="4K">
-                <div class="system-wrapper">
-                    <div class="system-text">4K</div>
-                </div>
-            </div>
-            <!---->
+          </div>
         </div>
+        <div class="col col-3">
+          <div class="collapse" id="threed">
+            <div class="card card-body">
+              Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col col-2">
+        <div class="collapse" id="fourd">
+          <div class="card card-body">
+            Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+        </div>
+      </div>
     </div>
     <%- include('partials/footer.ejs') %>

@@ -1,13 +1,35 @@
 <%- include('../partials/header.ejs') %>
+<link rel="stylesheet" href="../3/app3.css">
+  </head>
 
-<h1><%= user.firstname + ' ' + user.lastname %></h1>
-<img src="<%= user.profileImage %>" width="300px">
-<p><a href="mailto: <%= user.email %>"><%= user.eamail %></a></p>
+  <body>
+    <%- include('../partials/loadingScreen.ejs') %>
+      <%- include('../partials/navbar.ejs') %>
 
-<h3>Your Movies:</h3>
-<ul>
-    <% movies.foreach(function(movies){ %>
-        <li><a href="/movies/<%= movies.id %>"><%= movies.name %></a></li>
-    <% }); %>
-</ul>
+<div class="container bg-light rounded-3 mt-5 pt-5 shadow p-3 border-top border-secondary border-5 profile-box">
+    <div class="row mb-3">
+        <div class="col-8">
+            <h1 class="text-dark"><%= user.firstname + ' ' + user.lastname %></h1>
+            <div class="col-4 rounded-circle">
+                <img src="<%= user.profileImage %>" width="300px">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mb-5">
+            <p><a href="mailto: <%= user.email %>"><%= user.email %></a></p>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12 ">   
+            <h3>Your Movies:</h3>
+            <ul>
+                <% movies.forEach(function(movies){ %>
+                    <a href="/movies/<%= movies.id %>"><%= movies.image %></a>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <%- include('../partials/footer.ejs') %>

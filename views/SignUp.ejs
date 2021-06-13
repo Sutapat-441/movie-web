@@ -1,44 +1,65 @@
 <%- include('partials/secondHeader.ejs') %>
-  <div class="container-signUp">
-    <form action="/signUp" method="POST" enctype="multipart/from-data">
-      <div class="signUp-left">
-        <img class="imglogin-left" src="https://i.pinimg.com/originals/fc/1d/82/fc1d82ed5ea152597ce8decb0b526d90.jpg">
+  <div class="container container-signUp pt-5">
+    <div class="row row1 no-gutters">
+      <div class="col col-lg-5 col-6 ">
+        <img class="imglogin-left"  style="max-width: 500px;" src="/images/sign-in-up.jpg">
       </div>
 
-      <div class="signUp-right">
-        <i class="fa fa-user-plus"></i>
-        <div class="form-floating">
-          <input type="text" class="form-control" id="floatingInput" name="username" placeholder="name@example.com">
-          <label for="floatingInput">User name</label>
-        </div>
-        <div class="form-floating">
-          <input type="tel" class="form-control" id="floatingInput" name="phone" placeholder="name@example.com">
-          <label for="floatingInput">Phone number</label>
-        </div>
-        <div class="form-floating">
-          <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
-          <label for="floatingInput">E-mail</label>
-        </div>
-        <div class="form-floating">
-          <input type="password" class="form-control" id="floatingInput" name="password" placeholder="name@example.com">
-          <label for="floatingInput">Password</label>
-        </div>
-        <div class="form-floating">
-          <input type="text" class="form-control" id="floatingInput" name="firstname" placeholder="name@example.com">
-          <label for="floatingInput">First name</label>
-        </div>
-        <div class="form-floating">
-          <input type="text" class="form-control" id="floatingInput" name="lastname" placeholder="name@example.com">
-          <label for="floatingInput">Last name</label>
-        </div>
-        <div class="form">
-          <input type="file" class="form-control" id="floatingInput" name="profileImage" accept="image/*" >
-        </div>
+      <div class="col col-7 px-5 pt-5 signUp-right">
         
-        <div class="button-area">
-          <button class="btn btn-primary" id="signUpButton">Sign Up</button>
-        </div>
+        <h1 class="font-weight-bold py-1 text-center text-headlogin" >Sign Up <i class="fa fa-user-plus fs-2 text"></i></h1>
+        <h6 class="text-center py-3">Sign up to create account</h6>
+
+        <form action="/signUp" method="POST" enctype="multipart/form-data">
+          <div class="row justify-content-center py-1">
+            <div class="col-lg-7 form-floating">
+              <input type="text" class="form-control" name="username" placeholder="name@example.com">
+              <label for="floatingInput">User name</label>
+            </div>
+          </div>
+          <div class="row justify-content-center py-1">
+            <div class="col-lg-7 form-floating">
+              <input type="tel" class="form-control" name="phone" placeholder="name@example.com">
+              <label for="floatingInput">Phone number</label>
+            </div>
+          </div>
+          <div class="row justify-content-center py-1">
+            <div class="col-lg-7 form-floating">
+              <input type="email" class="form-control" name="email" placeholder="name@example.com">
+              <label for="floatingInput">E-mail</label>
+            </div>
+          </div>
+          <div class="row justify-content-center py-1">
+            <div class="col-lg-7 form-floating">
+              <input type="password" class="form-control" name="password" placeholder="name@example.com">
+              <label for="floatingInput">Password</label>
+            </div>
+          </div>
+          <div class="row justify-content-center py-1">
+            <div class="col-lg-7 form-floating">
+              <input type="text" class="form-control" name="firstname" placeholder="name@example.com">
+              <label for="floatingInput">First name</label>
+            </div>
+          </div>
+          <div class="row justify-content-center py-1">
+            <div class="col-lg-7 form-floating">
+              <input type="text" class="form-control" name="lastname" placeholder="name@example.com">
+              <label for="floatingInput">Last name</label>
+            </div>
+          </div>
+          <div class="row justify-content-center form py-1">
+            <div class="col-lg-7">
+              <input type="file" class="form-control" name="profileImage" accept="image/*" >
+            </div>    
+          </div>
+          
+          <div class="row justify-content-center button-area">
+            <div class="col-lg-7">
+              <button type="submit" class="btn-login mt-4 mb-5 justify-content-center rounded-pill" id="signUpButton">Sign Up</button>
+            </div>
+          </div>
+        </form> 
       </div>
-    </form>
+    </div>
   </div>
 <%- include('partials/secondFooter.ejs') %>
