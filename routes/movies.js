@@ -69,6 +69,8 @@ router.get('/new',middleware.isLoggedIn,function(req,res){
     });
 });
 
+
+
 router.get('/:id',function(req,res){
     Movie.findById(req.params.id).populate('comment').exec(function(err,foundMovie){//ส่งข้อมูลแบบให้มันไปถึงทั้งcommentกับmovies(join)
         console.log(foundMovie);
@@ -85,6 +87,8 @@ router.get('/:id',function(req,res){
         }
     });
 });
+
+
 
 // router.get('/selectSeat',isLoggedIn,function(req,res){
 //     res.render('movies/selectSeat.ejs');

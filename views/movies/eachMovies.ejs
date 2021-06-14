@@ -129,8 +129,8 @@
                               <a role="button" data-bs-toggle="modal" data-bs-target="#deleteModal" class="dropdown-item">Delete</a>
                             </li>
                           </ul>
-                        <% } %>
                       <% } %>
+                    <% } %>
 
                       <!-- checkว่า userเคยlikeรึยัง -->
                       <%# if (currentUser.like.moviename.equals(movies.name)){ %>
@@ -198,7 +198,7 @@
                               <div class="col">
                                 <div class="select-date">
                                   <% let today=new Date(); %>
-                                    <label class="fw-bold form-label">เลือกวันฉาย</label>
+                                    <label class="fw-bold form-label text-light">เลือกวันฉาย</label>
                                     <select id="select-display-date" class="form-select" name="date">
                                       <option value="<%= today %>">Today <%= today.toString().slice(0,15) %>
                                       </option>

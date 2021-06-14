@@ -9,8 +9,19 @@
                 <div class="row">
                   <% if(currentUser !=undefined){ %>
                     <% if (currentUser.role=='admin' ){ %>
-                      <div class="btn-addMovie">
-                        <a href="/movies/new" class="btn btn-primary my-2">+ Add new Movie</a>
+                      <div class="row btn-addMovie">
+                        <div class="col col-2">
+                          <a href="/movies/new" class="btn btn-outline-primary my-2">+ Add new Movie</a>
+                        </div>
+                        <div class="col col-2">
+                          <a href="/schedule/new" class="btn btn-outline-warning my-2">+ Add Schedule</a>
+                        </div>
+                        <div class="col col-2">
+                          <a href="/cinema/new" class="btn btnCinema my-2 col-8">+ Add Cinema</a>
+                        </div>
+                        <div class="col col-2">
+                          <a href="/major/new" class="btn btnMajor my-2 col-8">+ Add Major</a>
+                        </div>
                       </div>
                       <% } %>
                   <% } %>

@@ -147,8 +147,9 @@ app.post('/schedule/new', function(req,res){
 });
 
 app.get('/cinema/new',async function(req,res){
+    let movies = await Movie.find({}).exec();
     let major = await Major.find({}).exec();
-    res.render('./admin/addCinema.ejs', {major:major});
+    res.render('./admin/addCinema.ejs', {major:major, movies:movies});
 });
 
 app.post('/cinema/new',async function(req,res){

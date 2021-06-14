@@ -5,58 +5,62 @@
         <%- include('../partials/loadingScreen.ejs') %>
             <%- include('../partials/navbar.ejs') %>
 
-                <div class="container addCinema-container">
+                <div class="container addCinema-container my-5">
                     <div class="row">
-                        <i class="fa fa-upload"></i>
-                        <h1 class="title-cinema">Add Cinema</h1>
+                        <h1 class="text-light text-center">Add Cinema <i class="fa fa-upload fs-2 text"></i></h1>
                     </div>
-                    <div class="row">
-                        <form action="/cinema/new" method="POST" >
-                            <div class="cinema-system">
-                                <select class="form-select" name="cinema[system]" aria-label="Default select example">
-                                    <option selected>ระบบฉาย</option>
-                                    <option value="Normal">Normal</option>
-                                    <option value="3D">3D</option>
-                                    <option value="4D">4D</option>
-                                  </select>
+                </div>
+                <form action="/cinema/new" method="POST" >
+                    <div class="row justify-content-center py-3">
+                        <div class="col col-4 cinema-system">
+                            <select class="form-select" name="cinema[system]" aria-label="Default select example">
+                                <option selected>ระบบฉาย</option>
+                                <option value="Normal">Normal</option>
+                                <option value="3D">3D</option>
+                                <option value="4D">4D</option>
+                            </select>
+                        </div>
+                    </div>
+                        <div class="row mb-2 justify-content-center py-3">
+                            <div class="col col-4 form-floating">
+                                <input type="text" class="form-control addCinema" id="floatingInput" name="cinema[name]" placeholder="Cinema name">
+                                <label for="floatingInput">Cinema Name</label>
                             </div>
-                            <div class="row mb-2">
+                        </div>
+                        <div class="row mb-2 justify-content-center py-3">
+                            <div class="col col-4 cinema-system">
+                                <select class="form-select" name="cinema[major]">
+                                    <option selected>สาขา</option>
+                                    <% major.forEach(major => { %>
+                                        <option value="<%= major._id %>"><%= major.name %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-2 justify-content-center py-3">
+                            <div class="col col-2">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control addCinema" id="floatingInput" name="cinema[name]" placeholder="Cinema name">
-                                    <label for="floatingInput">Name</label>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="cinema-system">
-                                    <select class="form-select" name="cinema[major]">
-                                        <option selected>สาขา</option>
-                                        <% major.forEach(major => { %>
-                                            <option value="<%= major._id %>"><%= major.name %></option>
-                                        <% }); %>
-                                      </select>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-
-                                <div class="col">
-                                    <div class="form-floating">
                                     <input type="text" class="form-control addCinema" id="floatingInput" name="cinema[row]" placeholder="Row">
                                     <label for="floatingInput">Row</label>
                                 </div>
                             </div>
 
-                            <div class="col">
+                            <div class="col col-2">
                                 <div class="form-floating">
                                     <input type="text" class="form-control addCinema" id="floatingInput" name="cinema[column]" placeholder="Column">
                                     <label for="floatingInput">Column</label>
                                 </div>
                             </div>
                         </div>
-                 </div>
-                <button type="submit" class="btn btn-primary btn-add">Add</button><br>
-                <a href="/movies" class="go-back">
-                    << Go back</a>
-                        </form>
+                    </div>
+                    <center>
+                        <div class="row justify-content-center py-4">
+                            <div class="col col-4 col-lg-7">
+                                <button type="submit" class="btn-login mt-4 mb-5 justify-content-center rounded-pill">Add</button><br>
+                                <a href="/movies" class="go-back"><< Go back</a>
+                            </div>
                         </div>
-                        </div>
+                    </center>
+                </form>
+
 <%- include('../partials/footer.ejs') %>

@@ -5,15 +5,28 @@
         <%- include('../partials/loadingScreen.ejs') %>
             <%- include('../partials/navbar.ejs') %>
 
-                <div class="container">
+                <div class="container my-5">
+                    <div class="row text-center">
+                        <h1 class="text-light text-center">Add Major </i></h1>
+                    </div>
                     <form action="/major/new" method="POST">
-                        <div class="row">
-                            <input type="text" name="major[name]" >Name
+                        <div class="row justify-content-center py-3">
+                            <div class="col col-4 cinema-system form-floating">
+                                <input type="text" class="form-control" name="major[name]" placeholder="Name">
+                                <label for="floatingInput">Name</label>
+                            </div>
                         </div>
-                        <button type="submit">Add</button>
+                        <center>
+                            <div class="row justify-content-center py-3">
+                                <div class="col col-4 col-lg-7">
+                                    <button type="submit" class="btn-login mt-4 mb-5 justify-content-center rounded-pill">Add</button>
+                                </div>
+                                <a href="/movies" class="go-back"><< Go back</a>
+                            </div>
+                        </center>
                     </form>
                 </div>
-                <a href="/movies" class="go-back">
-                    << Go back</a>
+                
+                    
 
-                        <%- include('../partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>

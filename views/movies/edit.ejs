@@ -3,11 +3,13 @@
 <body>
 <%- include('../partials/navbar.ejs') %>
 
-    <div class="container addMovie-container">
-        <h1>Edit Movie</h1>
+    <div class="container addMovie-container my-5">
+        <div class="row">
+            <h1 class="text-light text-center">Edit Movie <i class="fa fa-upload fs-2 text"></i></h1>
+        </div>
         <form action="/movies/<%= movies._id %>?_method=PUT" method="POST" enctype="multipart/from-data">
-            <i class="fa fa-upload"></i>
-            <div class="form-floating">
+            <div class="row justify-content-center py-3">
+                <div class="col col-4 cinema-system form-floating">
                 <input type="text" class="form-control addMovie" id="floatingInput"name="movies[name]" placeholder="<%= movies.name %>" value="<%= movies.name %>">
                 <label for="floatingInput">Movie name</label>
             </div>
@@ -15,25 +17,45 @@
                 <input type="text" class="form-control addMovie"id="floatingInput" name="image" placeholder="URL">
                 <label for="floatingInput">Image URL</label>
             </div> -->
-            <div class="form">
-                <img src="<%= Movie.image %>" width="300px">
-                <input type="file" class="form-control addMovie"id="floatingInput" name="image" accept="image/*">
-                <label for="floatingInput">Image</label>
+            <div class="row justify-content-center py-3">
+                <div class="col col-4 cinema-system">
+                    <img src="<%= Movie.image %>" width="300px">
+                    <input type="file" class="form-control addMovie"id="floatingInput" name="image" accept="image/*">
+                    <label for="floatingInput">Image</label>
+                </div>
             </div>    
-            <div class="form-floating">
-                <input type="text" class="form-control addMovie"id="floatingInput" name="movies[type]" placeholder="<%= movies.type %>" value="<%= movies.type %>">
-                <label for="floatingInput">Type</label>
+            <div class="row justify-content-center py-3">
+                <div class="col col-4 cinema-system form-floating">
+                    <input type="text" class="form-control addMovie"id="floatingInput" name="movies[type]" placeholder="<%= movies.type %>" value="<%= movies.type %>">
+                    <label for="floatingInput">Type</label>
+                </div>
             </div>
-            <div class="form-floating">
-                <input type="text" class="form-control addMovie" name="movies[time]" placeholder="<%= movies.time %>" value="<%= movies.time %>">
-                <label for="floatingInput">Time</label>
+            <div class="row justify-content-center py-3">
+                <div class="col col-4 cinema-system form-floating">
+                    <input type="text" class="form-control addMovie" name="movies[time]" placeholder="<%= movies.time %>" value="<%= movies.time %>">
+                    <label for="floatingInput">Time</label>
+                </div>
             </div>
-            <div class="form-floating">
-                <input type="text" class="form-control addMovie"id="floatingInput" name="movies[language]" placeholder="<%= movies.language %>" value="<%= movies.language %>">
-                <label for="floatingInput">Language</label>
+            <div class="row justify-content-center py-3">
+                <div class="col col-4 cinema-system form-floating">
+                    <input type="text" class="form-control addMovie"id="floatingInput" name="movies[language]" placeholder="<%= movies.language %>" value="<%= movies.language %>">
+                    <label for="floatingInput">Language</label>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-add">Add</button><br>
-            <a href="/movies" class="go-back"> << Go back</a>
+            <div class="row justify-content-center py-3">
+                <div class="col col-4 cinema-system form-floating">
+                    <input type="text" class="form-control addMovie"id="floatingInput" name="movies[URL]" placeholder="<%= movies.URL %>>" value="<%= movies.URL %>">
+                    <label for="floatingInput">Trailer (NOTE : replace /embed/ at watch?v=)</label>
+                </div>
+            </div>
+            <center>
+                <div class="row justify-content-center py-3">
+                    <div class="col col-4 cinema-system form-floating">
+                        <button type="submit" class="btn-login mt-4 mb-5 justify-content-center rounded-pill">Add</button><br>
+                    </div>
+                    <a href="/movies" class="go-back"> << Go back</a>
+                </div>
+            </center>
         </form>
     </div>
-    <%- include('../partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>

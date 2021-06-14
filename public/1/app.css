@@ -410,13 +410,13 @@ body{
 
 
 /*movies*/
-.btn-group{
+/* .btn-group{
     position: absolute;
     margin-top: 550px;
     margin-left: -130px;
     background-color: black;
     border-radius: 5px;
-}
+} */
 /* .btn-addMovie{
     display: flex;
     margin-left: 190px;
@@ -425,13 +425,13 @@ body{
 
 
 /*add movie*/
-.fa-upload{
+/* .fa-upload{
     display: flex;
     justify-content: center;
     color: white;
     font-size: 4em;
-}
-.addMovie{
+} */
+/* .addMovie{
     width: 500px;
     margin-top: 25px;
 }
@@ -443,14 +443,14 @@ body{
 .btn-add{
     margin-top: 30px;
     margin-left: 230px;
-}
+} */
 .go-back{
     text-decoration: none;
     color: #54C571;
 }
 
 /*add comment*/
-.fa-comments{
+/* .fa-comments{
     display: flex;
     justify-content: center;
     font-size: 4em;
@@ -471,7 +471,7 @@ body{
 .btnSubmit{
     margin-top: 30px;
     margin-left: 220px;
-}
+} */
 
 /*add cinema*/
 .title-cinema{
@@ -504,4 +504,36 @@ datalist {
 }
 .border-now{
     border-image: linear-gradient(45deg, #ff00cc 0%,#333399 100%) 1;
+}
+.btn-login{
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 50%;
+    /* background-color: black;*/
+    color: white; 
+    font-weight: bold;
+    background-image: linear-gradient(45deg, #cf15aa 0%,#333399 100% ) !important;
+}
+.btnMajor{
+    border-color: rgb(253, 94, 94);
+    /* background-color: black;*/
+    color: rgb(253, 94, 94); 
+    
+    background: transparent !important;
+}
+.btnMajor:hover{
+    border-color: rgb(253, 94, 94);
+    /* background-color: black;*/
+    color: white; 
+    background-color: rgb(253, 94, 94) !important;
+}
+.btnCinema{
+    border-color: #27a146;
+    color: #27a146;
+}
+.btnCinema:hover{
+    border-color: #27a146;
+    color: white; 
+    background-color: #27a146 !important;
 }

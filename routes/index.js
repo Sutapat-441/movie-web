@@ -145,6 +145,11 @@ router.post('/regAdmin',function(req,res){
     });
 });
 
+router.get('/admin',function(req,res){
+    res.render('./admin/admin.ejs');
+});
+
+
 router.get('/logout',function(req,res){
     req.logout();
     req.flash('success', 'Logged you out successfully');

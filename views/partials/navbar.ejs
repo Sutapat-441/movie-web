@@ -19,11 +19,9 @@
           <a href="/logIn" class="btn rounded-circle me-2 login-btn"><i class="fa fa-user"></i></a>
           <a href="/signUp" class="btn btn-outline-light me-2 sing-up-btn"> <span class="charac-text"> Sign-up </span> </a>
         </div>
-        <%} else{%>
+        <%} else if (currentUser.role == 'member'){%>
           <svg class="bd-placeholder-img " height="50">
-            <img id="userFace"
-              src="https://shop.line-scdn.net/themeshop/v1/products/0e/c9/dc/0ec9dca1-d0a1-4fb5-88ed-dc59de677cf7/39/WEBSTORE/icon_198x278.png"
-              class="rounded-circle">
+            <img id="userFace"src="https://shop.line-scdn.net/themeshop/v1/products/0e/c9/dc/0ec9dca1-d0a1-4fb5-88ed-dc59de677cf7/39/WEBSTORE/icon_198x278.png"class="rounded-circle">
           </svg>
           <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,6 +32,19 @@
             <li><a class="dropdown-item" href="/favorite">Favorite</a></li>
             <li><a class="dropdown-item" href="/logout">Log out</a></li>
           </ul>
+          <% } else if(currentUser.role == 'admin') {%>
+            <svg class="bd-placeholder-img " height="50">
+              <img id="userFace"src="https://shop.line-scdn.net/themeshop/v1/products/0e/c9/dc/0ec9dca1-d0a1-4fb5-88ed-dc59de677cf7/39/WEBSTORE/icon_198x278.png"class="rounded-circle">
+            </svg>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <%= currentUser.username %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="/admin">System</a></li>
+              <li><a class="dropdown-item" href="/favorite">Favorite</a></li>
+              <li><a class="dropdown-item" href="/logout">Log out</a></li>
+            </ul>
           <% } %>
     </div>
 
@@ -51,19 +62,19 @@
   <% } %>
 </div>
 
-<div class="container position-relative">
+<div class="container position-relative ">
   <form action="/movies/search" method="POST">
     <div class="row position-absolute top-0 end-0">
-      <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" id="searchMovies">
+      <div class="col-10  col-lg-auto mb-3 mb-lg-0 me-lg-3" id="searchMovies">
         <i class="fa fa-search"></i>
         <input list="movies" type="text" name="movieSearch" class="search rounded-pill " placeholder=" Search Movies...">
         <datalist id="movies">
-          <% movies.forEach(movies => {%>
-            <option value="<%= movies.name %>">
-          <% }); %>  
+          <%# movies.forEach(movies => {%>
+            <option value="<%# movies.name %>">
+          <%# }); %>  
         </datalist>
       </div>
-      <div class="col-2">
+      <div class=" col-2">
         <button type="submit" id="search-button" class="btn me-2 search-btn mt-3">Search</button>
       </div>
     </div>
