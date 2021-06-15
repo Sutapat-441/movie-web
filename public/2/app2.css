@@ -23,7 +23,6 @@ body{
     outline: none;
     height: 50px;
     width: 100%;
-    /* background-color: black;*/
     color: white; 
     font-weight: bold;
     background-image: linear-gradient(45deg, #cf15aa 0%,#333399 100% ) !important;
@@ -33,57 +32,3 @@ body{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-/*#search{
-    outline: none;
-}*/
-/*sign up*/
-/* .signUp-right{
-    position: absolute;
-    width: 500px;
-    margin-top: 300px;
-    margin-left: 1250px;
-    
-} */
-/* .test{
-    background-color: #151515 !important;
-}
-.form-control{
-    width: 500px;
-    margin-bottom: 20px;
-}
-.fa-user-plus{
-    display: flex;
-    justify-content: center;
-    color: white;
-    margin-bottom: 35px;
-    font-size: 3.2em;
-}
-.imglogin-left{
-    position: absolute;
-    width: 1000px; 
-    height:1000px;
-} */
-
-/*log in*/
-/* .login-right{
-    position: absolute;
-    width: 500px;
-    margin-top: 350px;
-    margin-left: 1250px;
-}
-.fa-user{
-    display: flex;
-    justify-content: center;
-    color: white;
-    margin-bottom: 35px;
-    font-size: 3.2em;
-}
-#remember{
-    color: white;
-}
-.button-area{
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-} */

@@ -5,75 +5,9 @@
 
   <body>
     <%- include('../partials/loadingScreen.ejs') %>
-      <%# include('../partials/navbar.ejs') %>
+      <%- include('../partials/navbar.ejs') %>
 
-      <header class="p-3 bg-transparent text-white">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32">
-              <use xlink:href="#bootstrap" />
-            </svg>
-          </a>
       
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" id="nav-tab">
-            <li><a href="/" class="nav-link px-2 text-white" id="home-tab"><img src="/images/logo-web.png" class="logo-web"></a></li>
-            <li><a href="/movies" class="nav-link px-2 text-white">Now showing</a></li>
-            <li><a href="/theaters" class="nav-link px-2 text-white">Theater</a></li>
-          </ul>
-      
-      
-          <% if(!currentUser) {%>
-            <div class="text-end">
-              <a href="/logIn" class="btn rounded-circle me-2 login-btn"><i class="fa fa-user"></i></a>
-              <a href="/signUp" class="btn btn-outline-light me-2 sing-up-btn"> <span class="charac-text"> Sign-up </span> </a>
-            </div>
-            <%} else{%>
-              <svg class="bd-placeholder-img " height="50">
-                <img id="userFace"
-                  src="https://shop.line-scdn.net/themeshop/v1/products/0e/c9/dc/0ec9dca1-d0a1-4fb5-88ed-dc59de677cf7/39/WEBSTORE/icon_198x278.png"
-                  class="rounded-circle">
-              </svg>
-              <a class="nav-link dropdown-toggle text" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <%= currentUser.username %>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                <li><a class="dropdown-item" href="/user/<%=currentUser._id %>">Setting</a></li>
-                <li><a class="dropdown-item" href="/favorite/<%=currentUser._id %>">Favorite</a></li>
-                <li><a class="dropdown-item" href="/logout">Log out</a></li>
-              </ul>
-              <% } %>
-        </div>
-      
-      </header>
-      <div class="container">
-      <% if(error && error.lenght> 0){ %>
-        <div class="alert alert-danger" role="alert">
-          <%= error %>
-        </div>
-      <% } %>
-      <% if(success && success.lenght> 0){ %>
-        <div class="alert alert-success" role="alert">
-          <%= success %>
-        </div>
-      <% } %>
-      </div>
-      
-      <div class="container">
-        <form action="/movies/search" method="POST">
-        <div class="under-nav">
-          <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" id="searchMovies">
-            <i class="fa fa-search"></i>
-            <input list="movies" type="text" name="movieSearch" class="search rounded-pill " placeholder=" Search Movies...">
-            <datalist id="movies">
-              <% allmovies.forEach(allmovies => {%>
-                <option value="<%= allmovies.name %>">
-              <% }); %>  
-            </datalist>
-          </div>
-          <button type="submit" id="search-button" class="btn me-2 search-btn mt-3">Search</button>
-        </div>
-        </form>
-      </div>
 
       <div class="container mt-5">
         <div class="row">
@@ -117,7 +51,6 @@
         </div>
     </div>
 
-    
                   <div class="container">
                     <% if(currentUser !=undefined){ %>
                       <% if(currentUser.role=='admin' ){ %>
@@ -130,22 +63,30 @@
                             </li>
                           </ul>
                       <% } %>
-                    <% } %>
-
-                      <!-- checkว่า userเคยlikeรึยัง -->
-                      <%# if (currentUser.like.moviename.equals(movies.name)){ %>
-                        <!-- <div class="unlike-btn">
-                          <form action="/movies/<%# movies._id %>/unlike" method="POST">
-                            <button type="submit" class="btn btn-outline-warning btn-like">Favorite <i class="fa fa-gratipay"></i></button>
+                   
+                 
+                      <% if ( currentUser.like.includes(movies._id)){ %>
+                        <div class="row unlike-btn pt-5">
+                          <form action="/movies/<%= movies._id %>/unlike" method="POST">
+                            <button type="submit" class="btn btn-danger btn-like">Favorite <i class="fa fa-gratipay"></i></button>
                           </form>
-                        </div> -->
-                   <%# }else{ %>
-                        <div class="like-btn">
-                          <!-- <form action="/movies/<%# movies._id %>/like" method="POST"> -->
-                            <button type="submit" class="btn btn-outline-light btn-like">Favorite <i class="fa fa-gratipay"></i></button>
-                          <!-- </form> -->
                         </div>
-                   <%# } %>
+                   <% }else { %>
+                        <div class="row pt-5">
+                          <form action="/movies/<%= movies._id %>/like" method="POST">
+                            <button type="submit" class="btn btn-outline-light btn-like">Favorite <i class="fa fa-gratipay"></i></button>
+                          </form>
+                        </div>
+                   <% } %>
+                    <% } else{ %>
+                      <div class="row pt-5">
+                        <form action="/login" method="GET">
+                          <button type="submit" class="btn btn-outline-light btn-like">Favorite <i class="fa fa-gratipay"></i></button>
+                        </form>
+                      </div>
+                    <% } %>
+                </div>
+
                     <div class="main-container">
                       <div class="container-left">
                         <div class="card shadow-sm">
@@ -182,7 +123,6 @@
                             <p id="each-movie-sub">
                               <%= movies.language %>
                             </p>
-                            <!-- <p class="submitted">Submitted by <%# movies.author.username %></p> -->
                           </div>
 
 
@@ -224,7 +164,6 @@
                   </div>
 
 
-<!-- มาทำตรงนี้ด้วยนะ -->
 
                       <div class="container me-5 mb-3 mt-5">
                         <label class="review-title text-light ms-5"> <h2 class="ms-5"> Review </h2></label>
@@ -246,9 +185,7 @@
                                     <li><a class="dropdown-item" href="/movies/<%= movies._id %>/review/<%= comment._id %>/edit">Edit</a></li>
                                     <li>
                                       <a role="button" data-bs-toggle="modal" data-bs-target="#deletecommentModal" class="dropdown-item">Delete</a>
-                                      <!-- <form action="/movies/<%# movies._id %>/review/<%#comment._id %>?_method=DELETE" method="POST">
-                                        <button type="submit" class="dropdown-item">Delete</button>
-                                      </form> -->
+                                      
                                     </li>
                                   </ul>
                                 <% } %>
@@ -279,7 +216,7 @@
                           </div>
                         <% }); %>
 
-                          <!-- <button type="submit" class="dropdown-item">Delete</button> -->
+
                             <div class="modal fade" id="deleteModal" tabindex="-1">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -300,5 +237,5 @@
                                 </div>
                             </div>
 
-                          <!-- ถ้ากดจองเวลาแล้วให้เพิ่มหน้าreserveมาไว้ด้านล่างต่อได้เลย -->
+
 <%- include('../partials/footer.ejs') %>

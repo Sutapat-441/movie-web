@@ -28,8 +28,6 @@
                 </div>
                 <div class="row wrapImg row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-3 position-relative" >
                   <% movies.forEach(function(movies){ %>
-                    <!-- <div class="col-12 col-lg-auto me-lg-auto img-movies"> -->
-                      <!-- <div class="row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 position-relative img-movies"> -->
                         <div class="col p-3 position-relative img-movies">
                           <a href="/movies/<%= movies._id %>">
                             <img src="<%= movies.image %>" class='card-img-top image'>
@@ -59,7 +57,6 @@
   
                           </a>
                         </div>
-                    <!-- </div> -->
                     <% }); %>
                 </div>
               </div>

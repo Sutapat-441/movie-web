@@ -16,6 +16,4 @@ var movieSchema = new mongoose.Schema({ //โครงสร้างข้อ�
     price:Number
 });
 
-// movieSchema.index( { name: "text"} );
-
 module.exports = mongoose.model('Movie',movieSchema);

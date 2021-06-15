@@ -6,11 +6,7 @@ var cinemaSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Major'
     },
-    system:[{
-        type:String,
-        enum:['4D','3D','Normal'],
-        default:'Normal'
-    }],
+    system:String,
     seat:Array,
 });
 

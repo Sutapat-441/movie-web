@@ -22,7 +22,6 @@ var express = require('express'),
     uploads = multer({storage: storage, fileFilter: imageFilter}), 
     Movie   = require('../models/movies'),
     Comment = require('../models/comment'),
-    Like    = require('../models/like'),
     Schedule= require('../models/schedule'),
     Major = require('../models/major'),
     Admin   = require('../models/admin');
@@ -39,16 +38,6 @@ router.get('/',function(req,res){
 
 router.post('/new',middleware.isLoggedIn, uploads.single('image'), function(req,res){//รับข้อมูล
     req.body.movies.image = '/uploads/'+ req.file.filename//สร้าง path ไป folder upload
-    //var name = req.body.name;//สร้างตัวแปรมารับข้อมูล
-    // var image = req.body.image;
-    // var type = req.body.type;
-    // var time = req.body.time;
-    // var language = req.body.language;
-    // var author = {
-    //     id: req.user._id,
-    //     username: req.user.username
-    // };
-    //var newMovie = {name:name, image:image, type:type, time:time, language:language};
     Movie.create(req.body.movies,function(err,newlyMovie){
         if(err){
             console.log(err);
@@ -69,8 +58,6 @@ router.get('/new',middleware.isLoggedIn,function(req,res){
     });
 });
 
-
-
 router.get('/:id',function(req,res){
     Movie.findById(req.params.id).populate('comment').exec(function(err,foundMovie){//ส่งข้อมูลแบบให้มันไปถึงทั้งcommentกับmovies(join)
         console.log(foundMovie);
@@ -87,12 +74,6 @@ router.get('/:id',function(req,res){
         }
     });
 });
-
-
-
-// router.get('/selectSeat',isLoggedIn,function(req,res){
-//     res.render('movies/selectSeat.ejs');
-// });
 
 router.get('/:id/edit', function(req,res){
     Movie.findById(req.params.id, function(err,foundMovie){
@@ -134,8 +115,7 @@ router.post('/:id/schedule', function(req,res){
                 schedule_id.push(schedule._id);
             })
             Major.find({
-                schedule:{$in:schedule_id}
-            },function(err,foundMajor){
+                schedule:{$in:schedule_id}}).populate('cinema').exec(function(err,foundMajor){
                 if(err){
                     console.log(err); 
                 } else{
@@ -146,8 +126,6 @@ router.post('/:id/schedule', function(req,res){
         }
     });
 });
-
-//ทำส่วนนี้ให้เป็นของ Admin
 
 router.delete('/:id',middleware.checkAdmin,async function(req,res){
     let movies_id = req.params.id;
@@ -165,29 +143,6 @@ router.delete('/:id',middleware.checkAdmin,async function(req,res){
    
 });
 
-// router.delete('/:id',middleware.checkReviewOwner, function(req,res){
-//     Comment.findOneAndRemove(req.params.id, function(err){
-//         if(err){
-//             res.redirect('/movies/');
-//         } else{
-//             req.flash('success','You deleted your review.');
-//             res.redirect('/movies/');
-//         }
-//     });
-// });
-
-// router.get('/search/:id',function(req,res){
-//     if(req.params.id.equals(req.body.movieSearch.id)){
-//         Movie.findById(req.body.movieSearch, function(err,foundMovie){
-//             if(err){
-//                 console.log(err);
-//             }else{
-//                 res.render('./movies/movies.ejs', {movies:foundMovie});
-//             }
-//         })  
-//     }
-// })
-
 router.get('/search/:name', function(req,res){
     let movies = [];
     Movie.findById(req.params.name, function(err, foundMovies){
@@ -201,11 +156,6 @@ router.get('/search/:name', function(req,res){
     });
 });
 
-// router.post('/serach', function(req,res){
-//     var name = req.body.movieSearch;
-//     res.redirect('/movies/search/'+name);
-// });
-
 router.post('/search',function(req,res){
     Movie.findOne( { $or : [{ name: req.body.movieSearch }, {type: req.body.movieSearch} ]},function(err,searchMovie){
         if(err){
@@ -215,8 +165,6 @@ router.post('/search',function(req,res){
             res.redirect('/movies/search/'+searchMovie._id);
         }
     } );
-    //Movie.listIndexes();
-    // console.log(req.body);
 });
 
 router.post('/:id/like', middleware.isLoggedIn, function(req,res){
@@ -229,7 +177,7 @@ router.post('/:id/like', middleware.isLoggedIn, function(req,res){
                     console.log(err);
                     res.redirect('/')
                 } else{
-                        foundUser.like.push(foundMovie)
+                        foundUser.like.push(foundMovie._id)
                         foundUser.save();
                         res.redirect('back');
                     }
@@ -248,13 +196,19 @@ router.post('/:id/unlike', middleware.isLoggedIn, function(req,res){
                     console.log(err);
                     res.redirect('/');
                 } else{
-                    foundUser.like.pull(req.params.id);
+                    foundUser.like.pull(foundMovie._id);
                     foundUser.save();
                     res.redirect('back');
                 }
             })
         }
     })
+});
+
+router.get('/sort-by-Alphabet',async function(req,res){
+    let movies = await Movie.find().sort({"name": 1}).exec();
+    console.log('Sort by Alphabet');
+    res.render('./movies/movies.ejs', {movies: movies}); 
 });
 
 

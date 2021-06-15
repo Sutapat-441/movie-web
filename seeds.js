@@ -7,35 +7,39 @@ const { text } = require('body-parser');
 var movieData = [
     {
         name: "Howl's moving castle",
-        image: "https://www.metalbridges.com/wp-content/uploads/2015/08/Howls-Moving-Castle-10.jpg",
+        image: "/images/hows.jpg",
         type: "Fantacy",
         time: "110",
         language: ["ENG","TH"],
-        URL:'https://www.youtube.com/embed/iwROgK94zcM'
+        URL:'https://www.youtube.com/embed/iwROgK94zcM',
+        price:"200"
     },
     {
         name: "Ponyo",
-        image: "https://i.pinimg.com/originals/67/fb/bd/67fbbd4ac59f8c7d7b083c78a5433fad.jpg",
+        image: "/images/ponyo.jpg",
         type: "Fantacy",
         time: "110",
         language: ["ENG","TH"],
-        URL:'https://www.youtube.com/embed/CsR3KVgBzSM'
+        URL:'https://www.youtube.com/embed/CsR3KVgBzSM',
+        price:"160"
     },
     {
         name: "Spirit Away",
-        image: "https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctNDE2YS00YWE0LWE5ZWItZDBhYWQ0NTcxNWRhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
+        image: "/images/spirit-away.jpg",
         type: "Fantacy",
         time: "110",
         language: ["ENG","TH"],
-        URL:'https://www.youtube.com/embed/ByXuk9QqQkk'
+        URL:'https://www.youtube.com/embed/ByXuk9QqQkk',
+        price:"200"
     },
     {
         name: "Totoro",
-        image: "https://spoileralert7blog.files.wordpress.com/2016/01/8icxrwcatkkxhzdmgibliq.jpg",
+        image: "/images/Totoro.jpg",
         type: "Fantacy",
         time: "110",
         language: ["ENG","TH"],
-        URL:'https://www.youtube.com/embed/92a7Hj0ijLs'
+        URL:'https://www.youtube.com/embed/92a7Hj0ijLs',
+        price:"200"
     }
 ];
 

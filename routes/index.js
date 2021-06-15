@@ -22,23 +22,6 @@ var express = require('express'),
     uploads = multer({storage: storage, fileFilter: imageFilter}), 
     Comment = require('../models/comment');
 
-// Comment.remove({},function(err){
-//     if(err){
-//         console.log(err);
-//     }else{
-//         console.log('remove success');
-//     }
-// });
-
-// Admin.create(req.body,function(err,newadmin){
-//     if(err){
-//         console.log(err);
-//     }else{
-//         newadmin.aadminname.id = req.
-
-//     }
-// })
-
 router.get('/',function(req,res){
     Movie.find({},function(err,allMovies){
         if(err){
@@ -69,7 +52,8 @@ router.post('/signUp', uploads.single('profileImage'), function(req,res){
         email:req.body.email,
         firstname:req.body.firstname,
         lastname:req.body.lastname,
-        profileImage:req.body.profileImage
+        profileImage:req.body.profileImage,
+        like:[]
     });
     User.register(newUser,req.body.password,function(err,user){
         if(err){
@@ -116,16 +100,6 @@ router.post('/adminLogin', function(req, res, next) {
       });
     })(req, res, next);
   });
-// router.post('/adminLogin',passport.authenticate('local',
-// {
-//     failureRedirect:'/login'
-//     }),function(req,res){
-//         if(req.user.role=='admin'){
-//             res.redirect('/movies');
-//         }
-//         res.redirect('/');
-//     console.log(req.body);
-// })
 
 router.get('/regAdmin',function(req,res){
     res.render('regtoAdmin.ejs');
@@ -140,7 +114,7 @@ router.post('/regAdmin',function(req,res){
         }
         console.log('Reg to Admin success.'+admin.username);
         passport.authenticate('local')(req,res, function(){//check password
-            res.redirect('/movies');
+        res.redirect('/movies');
         });
     });
 });

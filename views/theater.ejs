@@ -2,46 +2,36 @@
 </head>
 <body>
 <%- include('partials/navbar.ejs') %>
-
+<div class="row">
+  <h2 id="movies-lookUp" class="text-light ms-5 mt-5 border-start border-5 border-light border-now">Theater</h2>
+</div>
     <div class="container-theater mt-5">
         <div class="row img-headerTheater">
             <img src="https://image.freepik.com/free-photo/rows-red-seats-theater_53876-64710.jpg" style="width: 100%;" id="headImg">
         </div>
     </div>
 
-    <div class="row brand-wrapper row">
-        <div class="col">
-            <div class="row">
-                <div class="col col-lg-4 col-4 icon-wrapper">
-                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f1c7366298871.5b112a7571eeb.png" style="width: 100%;" class="type-theater" alt="Emprivé Cineclub">
-                </div>
-
-                <div class="col col-4 icon-wrapper">
-                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f1c7366298871.5b112a7571eeb.png" style="width: 100%;"class="type-theater" alt="SF World Cinema">
-                </div>
-            </div>
+    <div class="container mt-5 pt-5 bg-light rounded-3 shadow p-3 border-top border-5 theater-details" style="width: 50%;">
+      <div class="row mb-3 ms-3">
+          <div class="col-12  ">
+              <h1 class="text-dark text-center">THE BEST CINEMA EXPERIENCE</h1>
         </div>
-        <div class="col">
-            <div class="row">
-                <div class="col col-4 icon-wrapper">
-                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f1c7366298871.5b112a7571eeb.png" style="width: 100%;" class="type-theater" alt="SFX Cinema">
-                </div>
-
-                <div class="col col-4 icon-wrapper">
-                    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4f1c7366298871.5b112a7571eeb.png" style="width: 100%;" class="type-theater" alt="SF Cinema">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="anchor-system" class="container section-system">
-        <div class="row justify-content-center">
-            <div class="system-tab">
+      </div>
+      <div class="row mb-3 ms-3">
+          <div class="row py-5">
+              <h5 class="text-dark text-center">เราคือผู้มอบประสบการณ์บันเทิงที่มุ่งเน้นความเป็นเลิศ ด้วยการใส่ใจทุกรายละเอียดตั้งแต่ก้าวแรกจนก้าวสุดท้าย พร้อมคัดสรรภาพยนตร์ชั้นเยี่ยมและแปลกใหม่ อีกทั้งมุ่งเฟ้นหานวัตกรรมบันเทิงสุดพิเศษ และเหนืออื่นใดคือการพัฒนางานด้านบริการให้ดีที่สุด เพื่อให้มั่นใจว่าทุกช่วงเวลาของคุณที่ เอส เอฟ จะมีแต่ความประทับใจ และความสุขอย่างแท้จริง</h5>
+          </div>
+      </div>
+      </div>
+  </div>
+    <div class="container section-system">
+        <div class="row justify-content-center ms-5">
+            <div class="system-tab ms-5">
                 <div class="row">
                     <div class="system-title active col-2">ระบบฉาย</div>
                 </div>
             </div>
-            <div class="row tab-wrapper">
+            <div class="row tab-wrapper ms-5">
                 <div class=" col system-item" style="width: 100%; display: inline-block;">
                     <img src="/images/normal.jpg" style="width: 200px;" alt="MX4D Cinema">
                     <div class="system-wrapper">
@@ -60,7 +50,6 @@
                         <button class="btn btn-outline-light" style="width: 200px;" type="button" data-bs-toggle="collapse" data-bs-target="#fourd" aria-expanded="false" >4D Cinema</button>
                     </div>
                 </div>
-                <!---->
             </div>
         </div>
     </div>
@@ -69,25 +58,34 @@
       <div class="row position-relative">
         <div class="col col-3">
           <div class="collapse" id="normal">
+            <div class="col">
+              <h1 class="text-light">Normal</h1>
+            </div>
             <div class="card card-body">
-              Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+              ขีดสุดนวัตกรรมระบบเสียงอัจฉริยะแห่งโลกภาพยนตร์สมบูรณ์แบบ  DOLBY ATMOS ให้เสียงสมจริง สุดทรงพลัง รับสัญญาณเสียงจากภาพยนตร์ได้ถึง 128 แชนนอล ที่แยกเสียงอิสระจากกัน ผ่านลำโพงเซอร์ราวด์มากที่สุดถึง 64 ตัว พร้อมชุดลำโพงเหนือศีรษะ เพื่อให้คุณสัมผัสประสบการณ์บันเทิงสมบูรณ์แบบ ครบทุกมิติ รอบทิศทางอย่างแท้จริง
             </div>
           </div>
         </div>
         <div class="col col-3">
           <div class="collapse" id="threed">
+            <div class="col">
+              <h1 class="text-light">3D Cinema</h1>
+            </div>
             <div class="card card-body">
-              Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+              สุดยอดนวัตกรรมบันเทิงทะลุจอสมบูรณ์แบบ SONY DIGITAL CINEMA 3D ตะลึงตา คมชัดเหนือกว่า ทะลุจอทุกมิติ กับการสร้างมิติภาพที่ลึกกว่าเครื่องฉายดิจิตอลทั่วไป และการให้สีของภาพที่นวลตาไม่จ้าหรือมืดเกินไป หมดปัญหาอาการเมื่อยล้าจากการชมภาพยนตร์เป็นเวลานาน รวมถึงแว่นตา 3 มิติแบบพิเศษที่มีน้ำหนักเบาสวมใส่สบาย ให้คุณเสมือนเข้าสู่โลกภาพยนตร์ที่สมบูรณ์แบบเหนือว่าที่คุณเคยสัมผัส
             </div>
           </div>
         </div>
-      </div>
       <div class="col col-2">
         <div class="collapse" id="fourd">
+          <div class="col">
+            <h1 class="text-light">4D Cinema</h1>
+          </div>
           <div class="card card-body">
-            Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+            โรงภาพยนตร์ 4 มิติสุดล้ำ สมจริงกับ 15 เอฟเฟ็กต์ เทคโนโลยีใหม่ล่าสุดจากอเมริกา ด้วยเก้าอี้ระบบ Pneumatic ใช้พลังงามลม เคลื่อนไหวได้ 360 องศา สมูททุกโมเม้นท์ นุ่มนวลกว่าเก้าอี้ระบบอื่นๆ และเอฟเฟ็กต์ที่ติดตั้งทั้งในโรงภาพยนตร์ เก้าอี้ และพิเศษกับเอฟเฟ็กต์จาก Armrest (ที่วางแขน)  ทำให้ไม่พลาดความสมจริงจากทุกทิศทางในทุกฉาก ทุกตอน ของการชมภาพยนตร์
           </div>
         </div>
       </div>
     </div>
+  </div>
     <%- include('partials/footer.ejs') %>

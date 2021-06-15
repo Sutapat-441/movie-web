@@ -6,26 +6,45 @@
     <%- include('../partials/loadingScreen.ejs') %>
       <%- include('../partials/navbar.ejs') %>
 
-        <div class="container mt-5 pt-5 bg-light rounded-3 shadow p-3 border-top border-5 profile-box">
-            <div class="row mb-3">
-                <div class="col-12">
-                    <h1 class="text-dark"><%= user.firstname + ' ' + user.lastname %></h1>
-                    <div class="col-4 rounded-circle">
-                        <img src="<%= user.profileImage %>" width="300px">
+
+        <div class="container mt-5 pt-5 bg-light rounded-3 shadow p-3 border-top border-5 profile-box" style="width: 50%;">
+            <div class="row mb-3 ms-3">
+                <div class="col-6  ">
+                    <img src="<%= user.profileImage %>" class=" rounded-circle" width="300px">
+                </div>
+                <div class="col-6">
+                    <div class="row py-3">
+                        <h3 class="text-dark">Userame : <%= user.username %></h3>
+                    </div>
+                    <div class="row py-3">
+                        <p class="text-dark">Name : <%= user.firstname + ' ' + user.lastname %></p>
+                    </div>
+                    <div class="row">
+                        <p>Email : <a href="mailto: <%= user.email %>"><%= user.email %></a></p>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 mb-5">
-                    <p><a href="mailto: <%= user.email %>"><%= user.email %></a></p>
-                </div>
-            </div>
-            <div class="row mt-2">
+        </div>
+        <div class="container mt-5  bg-light rounded-3 shadow p-3 border-top border-5 profile-box">
+            <div class="row mt-2 justify-content-center">
                 <div class="col-12 ">   
                     <h3>Favorite:</h3>
                     <ul>
-                        <% movies.forEach(function(movies){ %>
-                            <a href="/movies/<%= movies.id %>"><%= movies.image %></a>
+                        <% user.like.forEach(function(movie){ %>
+                            <a href="/movies/<%= movie._id %>"><img src="../<%= movie.image %>" style="width:300px;" class="ms-3"></a>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5  bg-light rounded-3 shadow p-3 border-top border-5 profile-box">
+            <div class="row mt-2 justify-content-center">
+                <div class="col-12 ">   
+                    <h3>Ticket:</h3>
+                    <ul>
+                        
+                        <% user.booking.forEach(function(booking){ %>
+                            <a href="/movies/<%= booking.schedule.movie._id %>"><img src="../<%= booking.schedule.movie.image %>" style="width:300px;" class="ms-3"></a>
                         <% }); %>
                     </ul>
                 </div>

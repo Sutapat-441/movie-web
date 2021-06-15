@@ -1,29 +1,20 @@
 <% major.forEach(major => { %>
   <div class="row display-schedule mb-2 major">
-      <div class="col-2  p-3 major-box">
-        <div class="row text-major">
-          <div class="col">
-            <h4 class="text-light text-center"><%= major.name %></h4>
+      <div class="col-2   p-4 major-box">
+        <div class="row">
+            <h4 class="text-light align-items-center text-center"><%= major.name %></h4>
           </div>
-        </div>
-        <div class="row text-system">
-          <div class="col">
-            <h4 class="text-light text-center"><%= major.system %></h4>
-          </div>
-        </div>
       </div>
 
         <div class="col-8 bg-light p-3">
           <div class="schedule-time">
-            <%# console.log(major._id); %>
             <% schedule.forEach(schedule => { %>
-              <%# console.log(major._id +'?'+ schedule.cinema.major); %>
-              <%#console.log(major._id.equals(schedule.cinema.major)); %>
               <% if (major._id.equals(schedule.cinema.major)){%>
-                  <a href="/reserve/<%= schedule._id %>/seat" class="btn text-light border-light btn-schedule"><%= schedule.showtime.toString().slice(16,21) %></a>
+                  <a href="/reserve/<%= schedule._id %>/seat" class="btn btn-dark text-light border-light"><%= schedule.cinema.system %><br><%= schedule.showtime.toString().slice(16,21) %></a>
               <% } %>
             <% }); %>
           </div>
       </div>
   </div>
+
 <% }); %>

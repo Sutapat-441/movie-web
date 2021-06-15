@@ -50,11 +50,6 @@ passport.deserializeUser(User.deserializeUser());
 //อ้างอิงuserปัจจุบัน
 
 
-// mongoose.connection.collections['movies'].drop( function(err) {
-//     console.log('collection dropped');
-// });
-
-
 app.use(function(req,res,next){
     res.locals.currentUser = req.user;//ตัวบอกว่าuserปัจจุบันคือใคร
     res.locals.error = req.flash('error');
@@ -80,22 +75,17 @@ app.get('/theaters',function(req,res){
     });
 });
 
-app.get('/user/:id',function(req,res){
-    User.findById(req.params.id, function(err, foundUser){
-        if(err){
-            req.flash('error', 'There is something wrong.');
-            return res.redirect('/');
-        } 
-        Movie.find().where('author.id').equals(foundUser._id).exec(function(err, foundMovie){//
-            if(err){
-                req.flash('error', 'There is something wrong.');
-                return res.redirect('/');
-            }
-            console.log(foundUser);
-            console.log(foundMovie);
-            res.render('user/profileUser.ejs', {user: foundUser, movies: foundMovie});
-        })
-    });
+app.get('/user/:id',async function(req,res){
+    let user = await User.findById(req.params.id).populate([
+        {
+            path: 'like'
+        }, {
+            path: 'booking.schedule',
+            populate: {
+                        path: 'movie'
+                    }
+        }]).exec();
+    res.render('user/profileUser.ejs', {user:user});
 });
 
 app.get('/history',function(req,res){
@@ -139,7 +129,7 @@ app.post('/schedule/new', function(req,res){
                         });
                      Major.update({_id:foundCinema.major},{$push:{schedule:newSchedule._id}}).exec();
                      newSchedule.save(); 
-                     res.redirect('/');//อนาคตต้องredirectไปหน้าadmin
+                     res.redirect('back');//อนาคตต้องredirectไปหน้าadmin
                     }
             })//สร้างseat ให้scheduleต้องหาในcinema
         }
@@ -178,12 +168,9 @@ app.post('/cinema/new',async function(req,res){
                     res.redirect('/');
                 }
         })
-    // console.log(seatPlace);
-    // console.log(req.body);
 });
 
 app.get('/major/new', function(req,res){
-
     res.render('./admin/newMajor.ejs');
 });
 
@@ -209,21 +196,8 @@ app.post('/confirm/reserve/:id/payment',middleware.isLoggedIn, function(req,res)
     } else{
         selectedseat = req.query.selectedseat;
     }
-    // Schedule.find({
-    //         _id:req.params.id,
-    //         seat: {$elemMatch: {seat_id: {$in: selectedseat}}},
-    //         "seat.available":true
-    //         },function(err,foundSchedule){
-    //             if(err){
-    //                 console.log(err);
-    //             } else{
-    //                 console.log(foundSchedule);
-    //                 res.redirect('/reserve/'+req.params.id+'/success');
-    //             }
-    //         }
-    //         )
     Schedule.updateMany(
-        {//query lanเีฟเำ
+        {//query 
             _id:req.params.id
         },
         {//update operation
@@ -238,25 +212,19 @@ app.post('/confirm/reserve/:id/payment',middleware.isLoggedIn, function(req,res)
             if(err){
                 console.log(err);
             } else {
-                User.update({id: req.user_id}, {
-                    $push: {booking : {
-                        schedule: updatedSchedule._id,
-                        seat: selectedseat
-                    }}
-                },function(err,updatedUser){
+                User.findById(req.user._id ,function(err,foundUser){
                     if(err){
                         console.log(err);
                     } else{
+
+                        foundUser.booking.push({schedule:req.params.id,seat:selectedseat});
+                        foundUser.save();
                         res.redirect('/reserve/'+req.params.id+'/success');
                     }
                 })
             }
         });
     });
-
-app.get('/admin',function(req,res){
-
-});
 
 app.listen(3000,function(){
     console.log('Server myMovieProject is running . . .');

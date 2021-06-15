@@ -3,7 +3,6 @@ var express = require('express'),
     middleware = require('../middleware'),
     Movie   = require('../models/movies'),
     Comment = require('../models/comment'),
-    Like    = require('../models/like'),
     Schedule= require('../models/schedule'),
     Major = require('../models/major');
 

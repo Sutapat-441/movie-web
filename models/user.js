@@ -21,21 +21,12 @@ var UserSchema = new mongoose.Schema({
         enum :['member','admin'],
         default:'member'
     },
-    like:[{
-        id:{
+    like:[
+        {
             type: mongoose.Schema.Types.ObjectId,
             ref:'Movie'
-        },
-        moviename:String
-    }]
-    //isAdmin: {type: Boolean, default: false},
-    // like : [
-    //     {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: 'Liked',
-    //         autopopulate: true
-    //     }
-    // ]
+        }
+    ]
 });
 
 UserSchema.plugin(passportLocalMongoose);

@@ -53,16 +53,20 @@
 <div class="container bg-light rounded-3 mt-5 pt-5 shadow p-3 border-top border-success border-5 payment-details"style="width:500px; height: 500px;">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-dark text-center mb-5">ยืนยันการซื้อบัตรชมภาพยนต์</h1>
+            <h1 class="text-dark text-center ">ยืนยันการซื้อบัตรชมภาพยนต์</h1>
         </div>
     </div>
     <div class="row mt-5 ms-2">
+        <h5 class="text-secondary">Theater : <%= schedule.cinema.name %></h3>
+    </div>
+    <div class="row ms-2">
+        <h5 class="text-secondary">System : <%= schedule.cinema.system %></h3>
+    </div>
+    <div class="row  ms-2">
         <h5 class="text-secondary">Movie : <%= schedule.movie.name %></h3>
     </div>
     <div class="row ms-2">
-    <% selectedseat.forEach(selectedseat =>{ %>
-        <h5 class="text-secondary">Seat  : <%= selectedseat %></h3>
-    <% }) %>
+        <h5 class="text-secondary">Seat  :<% selectedseat.forEach(selectedseat =>{ %> <%= selectedseat %><% }) %></h3>
     </div>
     <div class="row ms-2">
         <h5 class="text-secondary mb-5">Price : <%= schedule.movie.price*selectedseat.length %> บาท</h3>
