@@ -14,14 +14,12 @@ const express       = require('express'),
       Schedule      = require('./models/schedule'),
       middleware    = require('./middleware'),
       Major         = require('./models/major'),
-      Admin         = require('./models/admin'),
       seedDB        = require('./seeds');
 
 var moviesRoutes    = require('./routes/movies'),
     reviewRoutes    = require('./routes/reviews'),
     indexRoutes     = require('./routes/index'),
-    reserveRoutes   = require('./routes/reserve'),
-    adminRoutes     = require('./routes/admin');
+    reserveRoutes   = require('./routes/reserve');
 
 
 mongoose.connect('mongodb://localhost/myMovieProject',{
@@ -62,7 +60,6 @@ app.use('/', indexRoutes);
 app.use('/movies', moviesRoutes);
 app.use('/movies/:id/review', reviewRoutes);
 app.use('/reserve', reserveRoutes);
-// app.use('/admin',adminRoute);
 
 
 app.get('/theaters',function(req,res){
